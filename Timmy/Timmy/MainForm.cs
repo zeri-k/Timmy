@@ -16,5 +16,16 @@ namespace Timmy
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Program.StreamingMicRecognizeAsync(5);
+            this.txtView.Text += Program.resultText + "\r\n";
+        }
+
+        public void txtView_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

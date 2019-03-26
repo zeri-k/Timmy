@@ -28,13 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtView = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(66, 58);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(143, 65);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtView
+            // 
+            this.txtView.Location = new System.Drawing.Point(77, 148);
+            this.txtView.Multiline = true;
+            this.txtView.Name = "txtView";
+            this.txtView.Size = new System.Drawing.Size(652, 265);
+            this.txtView.TabIndex = 1;
+            this.txtView.TextChanged += new System.EventHandler(this.txtView_TextChanged);
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtView);
+            this.Controls.Add(this.button1);
+            this.Name = "MainForm";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.TextBox txtView;
     }
 }
 
