@@ -44,7 +44,8 @@ namespace Timmy
                             RecognitionConfig.Types.AudioEncoding.Linear16,
                             SampleRateHertz = 16000,
                             LanguageCode = "ko-KR",
-                            // SpeechContexts = 
+                            Model = "command_and_search",
+                            SpeechContexts = { new SpeechContext() { Phrases = { "티미야" } } }
                         },
                         InterimResults = true,
                     }
