@@ -44,7 +44,6 @@ namespace Timmy
                             RecognitionConfig.Types.AudioEncoding.Linear16,
                             SampleRateHertz = 16000,
                             LanguageCode = "ko-KR",
-                            // SpeechContexts = 
                         },
                         InterimResults = true,
                     }

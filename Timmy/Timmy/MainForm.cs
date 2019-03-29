@@ -17,7 +17,7 @@ namespace Timmy
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSpeechStart_Click(object sender, EventArgs e)
         {
             Program.StreamingMicRecognizeAsync(5);
             this.txtView.Text += Program.resultText + "\r\n";
