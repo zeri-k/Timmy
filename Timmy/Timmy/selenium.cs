@@ -8,13 +8,12 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 
-namespace ConsoleApp25
+namespace Timmy
 {
-    class Program
+    class Selenium
     {
-        static void Main(string[] args)
+        public void selenium()
         {
-
             IWebDriver driver = new ChromeDriver();
             driver.Url = "https://www.naver.com/";//주소 입력
            // driver.Url = "https://www.melon.com/chart/index.htm";
