@@ -128,3 +128,8 @@ C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\obj\Debug\Timmy.csproj.Cor
 C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\obj\Debug\Timmy.csproj.CopyComplete
 C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\obj\Debug\Timmy.exe
 C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\obj\Debug\Timmy.pdb
+<<<<<<< HEAD
+=======
+D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\WebDriver.dll
+D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\WebDriver.xml
+>>>>>>> 95d9203a5a3a56bf71e50ceeffb5dddaa369264f

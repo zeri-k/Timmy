@@ -54,9 +54,15 @@
             // 
             // ttsButton
             // 
+<<<<<<< HEAD
             this.ttsButton.Location = new System.Drawing.Point(242, 58);
             this.ttsButton.Name = "ttsButton";
             this.ttsButton.Size = new System.Drawing.Size(162, 65);
+=======
+            this.ttsButton.Location = new System.Drawing.Point(240, 58);
+            this.ttsButton.Name = "ttsButton";
+            this.ttsButton.Size = new System.Drawing.Size(154, 65);
+>>>>>>> 95d9203a5a3a56bf71e50ceeffb5dddaa369264f
             this.ttsButton.TabIndex = 2;
             this.ttsButton.Text = "tts";
             this.ttsButton.UseVisualStyleBackColor = true;
