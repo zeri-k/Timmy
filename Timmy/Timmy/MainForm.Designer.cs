@@ -28,19 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSpeechStart = new System.Windows.Forms.Button();
             this.txtView = new System.Windows.Forms.TextBox();
+            this.ttsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // btnSpeechStart
             // 
-            this.button1.Location = new System.Drawing.Point(66, 58);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(143, 65);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSpeechStart.Location = new System.Drawing.Point(66, 58);
+            this.btnSpeechStart.Name = "btnSpeechStart";
+            this.btnSpeechStart.Size = new System.Drawing.Size(143, 65);
+            this.btnSpeechStart.TabIndex = 0;
+            this.btnSpeechStart.Text = "음성 인식 시작";
+            this.btnSpeechStart.UseVisualStyleBackColor = true;
+            this.btnSpeechStart.Click += new System.EventHandler(this.btnSpeechStart_Click);
             // 
             // txtView
             // 
@@ -51,15 +52,27 @@
             this.txtView.TabIndex = 1;
             this.txtView.TextChanged += new System.EventHandler(this.txtView_TextChanged);
             // 
+            // ttsButton
+            // 
+            this.ttsButton.Location = new System.Drawing.Point(240, 58);
+            this.ttsButton.Name = "ttsButton";
+            this.ttsButton.Size = new System.Drawing.Size(154, 65);
+            this.ttsButton.TabIndex = 2;
+            this.ttsButton.Text = "tts";
+            this.ttsButton.UseVisualStyleBackColor = true;
+            this.ttsButton.Click += new System.EventHandler(this.ttsButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ttsButton);
             this.Controls.Add(this.txtView);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSpeechStart);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -67,8 +80,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSpeechStart;
         public System.Windows.Forms.TextBox txtView;
+        private System.Windows.Forms.Button ttsButton;
     }
 }
 
