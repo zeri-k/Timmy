@@ -8,16 +8,16 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 
-namespace ConsoleApp25
+namespace Timmy
 {
-    class Program
+    class Selenium
     {
-        static void Main(string[] args)
+        public void selenium()
         {
-
             IWebDriver driver = new ChromeDriver();
-            //driver.Url = "https://www.naver.com/";//주소 입력
-            driver.Url = "https://www.melon.com/chart/index.htm";
+            driver.Url = "https://www.naver.com/";//주소 입력
+           // driver.Url = "https://www.melon.com/chart/index.htm";
+
             driver.Manage().Window.Maximize();  //창크기 최대
                                                 /*
                                                 Thread.Sleep(500);
@@ -71,14 +71,14 @@ namespace ConsoleApp25
 
             driver.Close();
             */
-
             // 최신노래제목 (네이버1~10위 )
             IWebElement q = driver.FindElement(By.Id("query"));
-            q.SendKeys("노래순위");
+            q.SendKeys("노래순위"); 
             driver.FindElement(By.Id("search_btn")).Click();
             Thread.Sleep(5000);
 
             var rank = driver.FindElement(By.ClassName("list_top_music"));
+
 
             string song;
             string sing;
@@ -90,10 +90,11 @@ namespace ConsoleApp25
 
                 song = ranksong.Text;
                 sing = ranksinger.Text;
-                Console.Write(i + "위  " + sing + "  -  ");
+
+                Console.Write(i+"위  "+sing+"  -  ");
                 Console.WriteLine(song);
             }
-
+            
             /*
             // 최신노래제목 (네이버1~100위 )
              //미완성
@@ -150,7 +151,6 @@ namespace ConsoleApp25
                 
                 Console.WriteLine(song);
                */
-
 
 
         }
