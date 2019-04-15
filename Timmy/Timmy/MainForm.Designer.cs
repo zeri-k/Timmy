@@ -31,13 +31,15 @@
             this.btnSpeechStart = new System.Windows.Forms.Button();
             this.txtView = new System.Windows.Forms.TextBox();
             this.ttsButton = new System.Windows.Forms.Button();
+            this.resultbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnSpeechStart
             // 
-            this.btnSpeechStart.Location = new System.Drawing.Point(66, 58);
+            this.btnSpeechStart.Location = new System.Drawing.Point(58, 46);
+            this.btnSpeechStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSpeechStart.Name = "btnSpeechStart";
-            this.btnSpeechStart.Size = new System.Drawing.Size(143, 65);
+            this.btnSpeechStart.Size = new System.Drawing.Size(125, 52);
             this.btnSpeechStart.TabIndex = 0;
             this.btnSpeechStart.Text = "음성 인식 시작";
             this.btnSpeechStart.UseVisualStyleBackColor = true;
@@ -45,31 +47,46 @@
             // 
             // txtView
             // 
-            this.txtView.Location = new System.Drawing.Point(77, 148);
+            this.txtView.Location = new System.Drawing.Point(67, 118);
+            this.txtView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtView.Multiline = true;
             this.txtView.Name = "txtView";
-            this.txtView.Size = new System.Drawing.Size(652, 265);
+            this.txtView.Size = new System.Drawing.Size(571, 213);
             this.txtView.TabIndex = 1;
             this.txtView.TextChanged += new System.EventHandler(this.txtView_TextChanged);
             // 
             // ttsButton
             // 
-            this.ttsButton.Location = new System.Drawing.Point(240, 58);
+            this.ttsButton.Location = new System.Drawing.Point(210, 46);
+            this.ttsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ttsButton.Name = "ttsButton";
-            this.ttsButton.Size = new System.Drawing.Size(154, 65);
+            this.ttsButton.Size = new System.Drawing.Size(135, 52);
             this.ttsButton.TabIndex = 2;
             this.ttsButton.Text = "tts";
             this.ttsButton.UseVisualStyleBackColor = true;
             this.ttsButton.Click += new System.EventHandler(this.ttsButton_Click);
             // 
+            // resultbox
+            // 
+            this.resultbox.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.resultbox.Location = new System.Drawing.Point(378, 17);
+            this.resultbox.Multiline = true;
+            this.resultbox.Name = "resultbox";
+            this.resultbox.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.resultbox.Size = new System.Drawing.Size(260, 81);
+            this.resultbox.TabIndex = 3;
+            this.resultbox.TextChanged += new System.EventHandler(this.resultbox_TextChanged);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(700, 360);
+            this.Controls.Add(this.resultbox);
             this.Controls.Add(this.ttsButton);
             this.Controls.Add(this.txtView);
             this.Controls.Add(this.btnSpeechStart);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -83,6 +100,7 @@
         private System.Windows.Forms.Button btnSpeechStart;
         public System.Windows.Forms.TextBox txtView;
         private System.Windows.Forms.Button ttsButton;
+        public System.Windows.Forms.TextBox resultbox;
     }
 }
 
