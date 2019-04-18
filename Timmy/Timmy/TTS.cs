@@ -15,19 +15,52 @@ namespace Timmy
         public SpeechSynthesizer ss;
         public void tts(string txt)  //텍스트를 음성으로 변환
         {
+<<<<<<< HEAD
             ss = new SpeechSynthesizer();
             Selenium sel = new Selenium();
+=======
+            string a;
+>>>>>>> 6c2871d0aa022d0bbf2e889f583452ac9bd6e9dc
             if (txt.Contains("티미"))
             {
                 ss.SpeakAsync("네 티미입니다");
-
             }
+<<<<<<< HEAD
           
             if (txt.Contains("네이버"))
             {
                 ss.SpeakAsync("네이버 실행");
                 sel.selenium();
                 
+=======
+            Selenium sel = new Selenium();
+            if (txt.Contains("인터넷"))
+            {
+                if (txt.Contains("네이버"))
+                {
+                    sel.internet("naver");
+                    if (txt.Contains("노래순위"))
+                    {
+                        sel.navermusic10();
+                    }
+                }
+                if (txt.Contains("다음"))
+                {
+                    sel.internet("daum");
+                }
+                if (txt.Contains("구글"))
+                { 
+                    sel.internet("google");
+                    if(txt.Contains("로그인"))
+                    {
+                        sel.googlelogin();
+                    }
+                }
+                if (txt.Contains("꺼"))
+                {
+                    sel.chromeexit();
+                }
+>>>>>>> 6c2871d0aa022d0bbf2e889f583452ac9bd6e9dc
             }
             //프로세서 on,off
             if (txt.Contains("엑셀"))
