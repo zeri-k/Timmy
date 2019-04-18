@@ -5,6 +5,7 @@ using System.Linq;
 using System.Speech.Synthesis;
 using System.Text;
 using System.Threading.Tasks;
+using System.Speech.Recognition;
 
 
 namespace Timmy
@@ -12,19 +13,23 @@ namespace Timmy
     class TTS
     {
         public SpeechSynthesizer ss;
-        public void tts(string txt)
+        public void tts(string txt)  //텍스트를 음성으로 변환
         {
+            ss = new SpeechSynthesizer();
+            Selenium sel = new Selenium();
             if (txt.Contains("티미"))
             {
                 ss.SpeakAsync("네 티미입니다");
 
             }
-            Selenium sel = new Selenium();
+          
             if (txt.Contains("네이버"))
             {
+                ss.SpeakAsync("네이버 실행");
                 sel.selenium();
+                
             }
-            //프로세서 
+            //프로세서 on,off
             if (txt.Contains("엑셀"))
             {
                 doProgram("excel", txt, "엑셀");
@@ -41,6 +46,7 @@ namespace Timmy
             {
                 doProgram("calc", txt, "계산기");
             }
+            //컴퓨터 제어
             if (txt.Contains("컴퓨터"))
             {
                 if (txt.Contains("꺼"))
@@ -60,7 +66,7 @@ namespace Timmy
 
         private void doProgram(string filename, string txt, string key) //프로세서 실행, 종료 (계산기,콘솔x 32bit??)
         {
-            ss = new SpeechSynthesizer();
+           
 
             if (txt.Contains("켜")) // 실행
             {
@@ -76,11 +82,12 @@ namespace Timmy
 
                     if (proc.Id != cu.Id)
                         ss.SpeakAsync(key + "종료");
-                    proc.Kill();
+                        proc.Kill();
 
                 }
 
             }
         }
+
     }
 }

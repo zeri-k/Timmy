@@ -72,6 +72,7 @@ namespace Timmy
             driver.Close();
             */
             // 최신노래제목 (네이버1~10위 )
+            /*
             IWebElement q = driver.FindElement(By.Id("query"));
             q.SendKeys("노래순위"); 
             driver.FindElement(By.Id("search_btn")).Click();
@@ -94,7 +95,7 @@ namespace Timmy
                 Console.Write(i+"위  "+sing+"  -  ");
                 Console.WriteLine(song);
             }
-            
+            */
             /*
             // 최신노래제목 (네이버1~100위 )
              //미완성
