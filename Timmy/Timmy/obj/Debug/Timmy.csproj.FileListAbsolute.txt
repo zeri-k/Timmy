@@ -64,3 +64,6 @@ C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\obj\Debug\Timmy.csproj.Cor
 C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\obj\Debug\Timmy.csproj.CopyComplete
 C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\obj\Debug\Timmy.exe
 C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\obj\Debug\Timmy.pdb
+C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\obj\Debug\Timmy.csprojAssemblyReference.cache
+C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\obj\Debug\Interop.SHDocVw.dll
+C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\obj\Debug\Timmy.csproj.ResolveComReference.cache

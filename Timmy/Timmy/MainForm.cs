@@ -46,7 +46,7 @@ namespace Timmy
         public  void resultbox_TextChanged(object sender, EventArgs e)
         {
         }
-        public void Re(String a)
+        public void Re(string a)
         {
             resultbox.Text = a;
         }

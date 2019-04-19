@@ -5,13 +5,16 @@ using System.Linq;
 using System.Speech.Synthesis;
 using System.Text;
 using System.Threading.Tasks;
-
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.IE;
 
 namespace Timmy
 {
     class TTS
     {
         public SpeechSynthesizer ss;
+        public SHDocVw.InternetExplorer ie;
         public void tts(string txt)
         {
             ss = new SpeechSynthesizer();
@@ -22,8 +25,7 @@ namespace Timmy
                 ss.SpeakAsync("네 티미입니다");
                 
             }
-
-            //인터넷 연결
+        
             if (txt.Contains("네이버"))
             {
                 exPlore(txt, "naver.com", "네이버");
@@ -41,7 +43,7 @@ namespace Timmy
                 exPlore(txt, "google.com", "구글");
             }
 
-            //프로세서 
+            //프로세서
             if (txt.Contains("엑셀"))
             {
                 doProgram("excel", txt, "엑셀");
@@ -58,6 +60,8 @@ namespace Timmy
             {
                 doProgram("calc", txt, "계산기");
             }
+
+            //컴퓨터 제어
             if (txt.Contains("컴퓨터"))
             {
                 if (txt.Contains("꺼"))
