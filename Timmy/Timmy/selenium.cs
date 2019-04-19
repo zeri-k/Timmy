@@ -17,9 +17,9 @@ namespace Timmy
         IWebDriver driver = new ChromeDriver();
         MainForm main = new MainForm();
 
-        public void internet(string a)
+        public void internet(string url)
         {
-                driver.Url = ("https://www."+a+".com/");//주소 입력
+                driver.Url = ("https://www."+url+"/");//주소 입력
                 driver.Manage().Window.Maximize();  //창크기 최대
                 
 
@@ -38,13 +38,6 @@ namespace Timmy
         public void navermusic10() // 최신노래제목 (네이버1~10위 ) - 최신곡
         {
 
-<<<<<<< HEAD
-            driver.Close();
-            */
-            // 최신노래제목 (네이버1~10위 )
-            /*
-=======
->>>>>>> 6c2871d0aa022d0bbf2e889f583452ac9bd6e9dc
             IWebElement q = driver.FindElement(By.Id("query"));
             q.SendKeys("노래순위");                         //네이버 검색어 입력
             driver.FindElement(By.Id("search_btn")).Click();
@@ -66,22 +59,12 @@ namespace Timmy
                 Console.Write(i + "위  " + sing + "  -  ");
                 Console.WriteLine(song);
             }
-<<<<<<< HEAD
-            */
-            /*
-            // 최신노래제목 (네이버1~100위 )
-             //미완성
-            IWebElement q = driver.FindElement(By.Id("query"));
-            q.SendKeys("노래순위");
-            driver.FindElement(By.Id("search_btn")).Click();
-=======
         }
         public void googlelogin()
         {
             // driver.Navigate().Forward(); //앞페이지
             // driver.Navigate().Refresh(); //새로고침
             driver.FindElement(By.XPath("//*[@id='gb_70']")).Click();
->>>>>>> 6c2871d0aa022d0bbf2e889f583452ac9bd6e9dc
             Thread.Sleep(1000);
             driver.FindElement(By.Id("identifierId")).SendKeys("github1919@gmail.com");
             Thread.Sleep(500);
@@ -114,7 +97,7 @@ namespace Timmy
 
         public void chromeexit() //크롬종료  - 인터넷꺼
         {
-            driver.quit();
+            driver.Quit();
         }
 
         // driver.Url = "https://www.melon.com/chart/index.htm";
