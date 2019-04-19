@@ -13,24 +13,21 @@ namespace Timmy
 {
     class Selenium
     {
+        private IWebDriver driver;
         ChromeDriverService ser = ChromeDriverService.CreateDefaultService();
-        IWebDriver driver;
-
         MainForm main = new MainForm();
 
         public void internet(string url)
         {
             ser.HideCommandPromptWindow = true;
-            driver = new ChromeDriver(ser, new ChromeOptions());
+            this.driver = new ChromeDriver(ser, new ChromeOptions());
+            driver.Manage().Window.Maximize();  //창크기 최대
             driver.Url = ("https://www."+url+"/");//주소 입력
-                driver.Manage().Window.Maximize();  //창크기 최대
-                
-
         }
+
         public void weather()
         {
-            ser.HideCommandPromptWindow = true;
-            driver = new ChromeDriver(ser, new ChromeOptions());
+            Thread.Sleep(1000);
             string result;
             IWebElement q = driver.FindElement(By.Id("query"));
             q.SendKeys("날씨");
@@ -42,8 +39,6 @@ namespace Timmy
         }
         public void navermusic10() // 최신노래제목 (네이버1~10위 ) - 최신곡
         {
-            ser.HideCommandPromptWindow = true;
-            driver = new ChromeDriver(ser, new ChromeOptions());
 
             IWebElement q = driver.FindElement(By.Id("query"));
             q.SendKeys("노래순위");                         //네이버 검색어 입력
@@ -56,7 +51,6 @@ namespace Timmy
             string sing;
             for (int i = 1; i <= 10; i++)
             {
-
                 var ranksong = rank.FindElement(By.XPath("//*[@id='main_pack']/div[2]/div[2]/ol/li[" + i + "]/div/div[1]/div[2]/div[1]/a"));  //노래 이름
                 var ranksinger = rank.FindElement(By.XPath("//*[@id='main_pack']/div[2]/div[2]/ol/li[" + i + "]/div/div[1]/div[2]/div[2]/a[1]")); //가수
 
@@ -69,8 +63,6 @@ namespace Timmy
         }
         public void googlelogin()
         {
-            ser.HideCommandPromptWindow = true;
-            driver = new ChromeDriver(ser, new ChromeOptions());
             // driver.Navigate().Forward(); //앞페이지
             // driver.Navigate().Refresh(); //새로고침
             driver.FindElement(By.XPath("//*[@id='gb_70']")).Click();
@@ -88,9 +80,6 @@ namespace Timmy
         public void facebook()  //페이스북 로그인
         {
 
-            ser.HideCommandPromptWindow = true;
-            driver = new ChromeDriver(ser, new ChromeOptions());
-
             driver.Url = "https://www.facebook.com/";
 
             IWebElement email = driver.FindElement(By.Id("email"));
@@ -107,9 +96,17 @@ namespace Timmy
 
         public void chromeexit() //크롬종료  - 인터넷꺼
         {
-            ser.HideCommandPromptWindow = true;
-            driver = new ChromeDriver(ser, new ChromeOptions());
-            driver.Quit();
+            string ch = "chrome";
+            var pro = Process.GetProcessesByName(ch);
+            Process cu = Process.GetCurrentProcess();
+            foreach (Process proc in pro)
+            {
+
+                if (proc.Id != cu.Id)
+
+                proc.Kill();
+
+            }
         }
 
         // driver.Url = "https://www.melon.com/chart/index.htm";

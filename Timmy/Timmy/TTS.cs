@@ -13,6 +13,7 @@ namespace Timmy
 {
     class TTS
     {
+        Selenium sel = new Selenium();
         public SpeechSynthesizer ss;
         public SHDocVw.InternetExplorer ie;
         public void tts(string txt)
@@ -43,7 +44,12 @@ namespace Timmy
                 exPlore(txt, "google.com", "구글");
             }
 
+<<<<<<< HEAD
             //프로세서
+=======
+
+            //프로세서 
+>>>>>>> d64eb6854aa0314ba02b93211cf04b9cfdf05b61
             if (txt.Contains("엑셀"))
             {
                 doProgram("excel", txt, "엑셀");
@@ -79,7 +85,7 @@ namespace Timmy
         }
         private void exPlore(string txt, string url, string key) //인터넷 키고,끄기
         {
-            Selenium sel = new Selenium();
+            
 
             if (txt.Contains("켜"))
             {
@@ -90,6 +96,10 @@ namespace Timmy
             {
                 ss.SpeakAsync("인터넷 종료");
                 sel.chromeexit();
+            }
+            if (txt.Contains("a"))
+            {
+                sel.weather();
             }
 
         }
@@ -102,6 +112,7 @@ namespace Timmy
             {
                 ss.SpeakAsync(key + "실행");
                 Process.Start(filename);
+
             }
             else if (txt.Contains("꺼")) //종료
             {
