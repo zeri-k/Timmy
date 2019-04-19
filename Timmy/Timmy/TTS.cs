@@ -15,10 +15,12 @@ namespace Timmy
         public void tts(string txt)
         {
             ss = new SpeechSynthesizer();
-         
+            MainForm mainform = new MainForm();
+
             if (txt.Contains("티미"))
             {
                 ss.SpeakAsync("네 티미입니다");
+                
             }
 
             //인터넷 연결
@@ -69,8 +71,7 @@ namespace Timmy
                     Process.Start("shutdown.exe", "-r -t 03");
                 }
             }
-            MainForm mainForm = new MainForm();
-            mainForm.txtView.Text = "";
+          
         }
         private void exPlore(string txt, string url, string key) //인터넷 키고,끄기
         {
@@ -81,7 +82,7 @@ namespace Timmy
                 ss.SpeakAsync(key + "실행");
                 sel.internet(url);
             }
-            else if (txt.Contains("꺼"))
+           else if (txt.Contains("꺼"))
             {
                 ss.SpeakAsync("인터넷 종료");
                 sel.chromeexit();
