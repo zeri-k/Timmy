@@ -14,15 +14,38 @@ namespace Timmy
         public SpeechSynthesizer ss;
         public void tts(string txt)
         {
+            string a;
             if (txt.Contains("티미"))
             {
                 ss.SpeakAsync("네 티미입니다");
-
             }
             Selenium sel = new Selenium();
-            if (txt.Contains("네이버"))
+            if (txt.Contains("인터넷"))
             {
-                sel.selenium();
+                if (txt.Contains("네이버"))
+                {
+                    sel.internet("naver");
+                    if (txt.Contains("노래순위"))
+                    {
+                        sel.navermusic10();
+                    }
+                }
+                if (txt.Contains("다음"))
+                {
+                    sel.internet("daum");
+                }
+                if (txt.Contains("구글"))
+                { 
+                    sel.internet("google");
+                    if(txt.Contains("로그인"))
+                    {
+                        sel.googlelogin();
+                    }
+                }
+                if (txt.Contains("꺼"))
+                {
+                    sel.chromeexit();
+                }
             }
             //프로세서 
             if (txt.Contains("엑셀"))
