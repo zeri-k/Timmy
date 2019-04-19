@@ -16,8 +16,10 @@ namespace Timmy
     public partial class MainForm : Form
     {
 
-      
-       
+
+        public SpeechSynthesizer ss;
+
+
         public MainForm()
         {
             InitializeComponent();
@@ -31,29 +33,28 @@ namespace Timmy
 
         public void txtView_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
         private void ttsButton_Click(object sender, EventArgs e)
         {
-          
+            ss = new SpeechSynthesizer();
             string txt = txtView.Text;
 
             TTS tts = new TTS();
             tts.tts(txt);
-            txtView.Text = "";
-            
+
         }
         public  void resultbox_TextChanged(object sender, EventArgs e)
         {
         }
-        public void Re(String a)
+        public void Re(string a)
         {
             resultbox.Text = a;
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+            
 
-        
 
         }
 
