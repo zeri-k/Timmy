@@ -13,19 +13,24 @@ namespace Timmy
 {
     class Selenium
     {
-        
-        IWebDriver driver = new ChromeDriver();
+        ChromeDriverService ser = ChromeDriverService.CreateDefaultService();
+        IWebDriver driver;
+
         MainForm main = new MainForm();
 
         public void internet(string url)
         {
-                driver.Url = ("https://www."+url+"/");//주소 입력
+            ser.HideCommandPromptWindow = true;
+            driver = new ChromeDriver(ser, new ChromeOptions());
+            driver.Url = ("https://www."+url+"/");//주소 입력
                 driver.Manage().Window.Maximize();  //창크기 최대
                 
 
         }
         public void weather()
         {
+            ser.HideCommandPromptWindow = true;
+            driver = new ChromeDriver(ser, new ChromeOptions());
             string result;
             IWebElement q = driver.FindElement(By.Id("query"));
             q.SendKeys("날씨");
@@ -37,6 +42,8 @@ namespace Timmy
         }
         public void navermusic10() // 최신노래제목 (네이버1~10위 ) - 최신곡
         {
+            ser.HideCommandPromptWindow = true;
+            driver = new ChromeDriver(ser, new ChromeOptions());
 
             IWebElement q = driver.FindElement(By.Id("query"));
             q.SendKeys("노래순위");                         //네이버 검색어 입력
@@ -62,6 +69,8 @@ namespace Timmy
         }
         public void googlelogin()
         {
+            ser.HideCommandPromptWindow = true;
+            driver = new ChromeDriver(ser, new ChromeOptions());
             // driver.Navigate().Forward(); //앞페이지
             // driver.Navigate().Refresh(); //새로고침
             driver.FindElement(By.XPath("//*[@id='gb_70']")).Click();
@@ -79,7 +88,8 @@ namespace Timmy
         public void facebook()  //페이스북 로그인
         {
 
-  
+            ser.HideCommandPromptWindow = true;
+            driver = new ChromeDriver(ser, new ChromeOptions());
 
             driver.Url = "https://www.facebook.com/";
 
@@ -97,6 +107,8 @@ namespace Timmy
 
         public void chromeexit() //크롬종료  - 인터넷꺼
         {
+            ser.HideCommandPromptWindow = true;
+            driver = new ChromeDriver(ser, new ChromeOptions());
             driver.Quit();
         }
 
