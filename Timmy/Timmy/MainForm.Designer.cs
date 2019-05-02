@@ -47,7 +47,7 @@
             // 
             // txtView
             // 
-            this.txtView.Location = new System.Drawing.Point(67, 118);
+            this.txtView.Location = new System.Drawing.Point(67, 149);
             this.txtView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtView.Multiline = true;
             this.txtView.Name = "txtView";
@@ -69,11 +69,11 @@
             // resultbox
             // 
             this.resultbox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.resultbox.Location = new System.Drawing.Point(378, 17);
+            this.resultbox.Location = new System.Drawing.Point(378, 12);
             this.resultbox.Multiline = true;
             this.resultbox.Name = "resultbox";
-            this.resultbox.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.resultbox.Size = new System.Drawing.Size(260, 81);
+            this.resultbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.resultbox.Size = new System.Drawing.Size(260, 114);
             this.resultbox.TabIndex = 3;
             this.resultbox.TextChanged += new System.EventHandler(this.resultbox_TextChanged);
             // 
@@ -81,7 +81,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 360);
+            this.ClientSize = new System.Drawing.Size(700, 460);
             this.Controls.Add(this.resultbox);
             this.Controls.Add(this.ttsButton);
             this.Controls.Add(this.txtView);

@@ -8,18 +8,19 @@ namespace Timmy
 {
     class Selenium
     {
-        private IWebDriver driver;
-        ChromeDriverService ser = ChromeDriverService.CreateDefaultService();
-        MainForm main = new MainForm();
 
+
+       
+        
         public void internet(string url)
         {
-            ser.HideCommandPromptWindow = true;
-            this.driver = new ChromeDriver(ser, new ChromeOptions());
-            driver.Manage().Window.Maximize();  //창크기 최대
-            driver.Url = ("https://www." + url + "/");//주소 입력
-        }
 
+        }
+        public void exit()
+        {
+
+        }
+        /*
         public void weather()
         {
             Thread.Sleep(1000);
@@ -103,7 +104,7 @@ namespace Timmy
 
             }
         }
-
+        */
         // driver.Url = "https://www.melon.com/chart/index.htm";
 
 
