@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Speech.Synthesis;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.IE;
 
 namespace Timmy
 {
@@ -43,13 +35,7 @@ namespace Timmy
             {
                 exPlore(txt, "google.com", "구글");
             }
-
-<<<<<<< HEAD
-            //프로세서
-=======
-
-            //프로세서 
->>>>>>> d64eb6854aa0314ba02b93211cf04b9cfdf05b61
+            
             if (txt.Contains("엑셀"))
             {
                 doProgram("excel", txt, "엑셀");
