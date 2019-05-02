@@ -26,10 +26,8 @@ D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\Newtonsoft.Json.dll
 D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\System.Diagnostics.DiagnosticSource.dll
 D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\System.Interactive.Async.dll
 D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\System.Net.Http.dll
-D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\System.Security.Cryptography.Algorithms.dll
 D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\System.Security.Cryptography.Encoding.dll
 D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\System.Security.Cryptography.Primitives.dll
-D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\System.Security.Cryptography.X509Certificates.dll
 D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\WebDriver.dll
 D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\Google.Api.CommonProtos.pdb
 D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\Google.Api.CommonProtos.xml
@@ -95,10 +93,8 @@ C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\bin\Debug\Newtonsoft.Json.
 C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\bin\Debug\System.Diagnostics.DiagnosticSource.dll
 C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\bin\Debug\System.Interactive.Async.dll
 C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\bin\Debug\System.Net.Http.dll
-C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\bin\Debug\System.Security.Cryptography.Algorithms.dll
 C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\bin\Debug\System.Security.Cryptography.Encoding.dll
 C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\bin\Debug\System.Security.Cryptography.Primitives.dll
-C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\bin\Debug\System.Security.Cryptography.X509Certificates.dll
 C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\bin\Debug\WebDriver.dll
 C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\bin\Debug\Google.Api.CommonProtos.pdb
 C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\bin\Debug\Google.Api.CommonProtos.xml
