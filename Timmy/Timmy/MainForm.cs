@@ -46,16 +46,16 @@ namespace Timmy
 
             if (txt.Contains("켜"))
             {
-                if (txt.Contains("인터넷"))
-                {
-                    internet();
-                }
+              
                 //새 탭으로 여는거 추가요망
                 for (int i = 0; i < parser.GetLength(0); i++)
                 {
                     if (txt.Contains(parser[i, 0]))
                     {
-                        //adr(parser[i, 1]);
+                        ss.SpeakAsync(txt + "실행");
+                        internet(parser[i, 1]);
+                        
+                            
                         //이거 바꾸면 됨
                     }
                 }
@@ -64,6 +64,7 @@ namespace Timmy
             {
                 if (txt.Contains("인터넷"))
                 {
+                    ss.SpeakAsync("인터넷 종료");
                     driver.Quit();
                 }
             }else if (txt.Contains("이동"))
@@ -72,13 +73,16 @@ namespace Timmy
                 {
                     if (txt.Contains(parser[i, 0]))
                     {
-                        adr(parser[i, 1]);
+                        ss.SpeakAsync("인터넷 이동");
+                        internet(parser[i, 1]);
+
                     }
                 }
             }
 
             if (txt.Contains("검색"))
             {
+                ss.SpeakAsync(txt);
                 naversearch(txt.Replace("검색", ""));
             }
             
@@ -94,22 +98,24 @@ namespace Timmy
         {
             
         }
-        public void internet()
+        public void internet(string url)
         {
 
             ser.HideCommandPromptWindow = true;
             driver = new ChromeDriver(ser, new ChromeOptions());
-            driver.Manage().Window.Maximize();  
+            driver.Manage().Window.Maximize();
+            driver.Url = ("https://www." + url);
 
         }
 
         // 주소입력
+        /*
         public void adr(string url) 
         {
-            driver.Url = ("https://www." + url + "/");
+            driver.Url = ("https://www." + url );
 
         }
-
+        */
         // 검색어입력
         public void naversearch(string searchword)
         {
@@ -145,9 +151,12 @@ namespace Timmy
             }
             else
             {
-                IWebElement q = driver.FindElement(By.Id("query"));
-                q.SendKeys(searchword);                       
-                driver.FindElement(By.Id("search_btn")).Click();
+               
+                    IWebElement q = driver.FindElement(By.Id("query"));
+                    q.Clear();
+                    q.SendKeys(searchword);
+                    driver.FindElement(By.Id("search_btn")).Click();
+                
             }
         }
     }
