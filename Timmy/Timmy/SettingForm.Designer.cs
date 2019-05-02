@@ -28,24 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingForm));
             this.ID = new System.Windows.Forms.TextBox();
             this.PW = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.site = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.okbtn = new System.Windows.Forms.Button();
             this.delebtn = new System.Windows.Forms.Button();
-            this.listsite = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listPW = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.site = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.col_site_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_pw = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ID
@@ -97,21 +100,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "자동화 ID/PW 입력";
             // 
-            // listView1
+            // site
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.listsite,
-            this.listID,
-            this.listPW});
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(6, 20);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(271, 124);
-            this.listView1.TabIndex = 5;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.site.FormattingEnabled = true;
+            this.site.Items.AddRange(new object[] {
+            "구글",
+            "네이버",
+            "다음",
+            "페이스북"});
+            this.site.Location = new System.Drawing.Point(67, 30);
+            this.site.Name = "site";
+            this.site.Size = new System.Drawing.Size(100, 20);
+            this.site.TabIndex = 3;
             // 
             // label1
             // 
@@ -143,21 +143,6 @@
             this.delebtn.UseVisualStyleBackColor = true;
             this.delebtn.Click += new System.EventHandler(this.delebtn_Click);
             // 
-            // listsite
-            // 
-            this.listsite.Text = "사이트";
-            this.listsite.Width = 100;
-            // 
-            // listID
-            // 
-            this.listID.Text = "ID";
-            this.listID.Width = 100;
-            // 
-            // listPW
-            // 
-            this.listPW.Text = "PW";
-            this.listPW.Width = 100;
-            // 
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -171,7 +156,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.listView1);
+            this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(235, 50);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(283, 158);
@@ -179,18 +164,49 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ID/PW 등록 목록";
             // 
-            // site
+            // dataGridView1
             // 
-            this.site.FormattingEnabled = true;
-            this.site.Items.AddRange(new object[] {
-            "구글",
-            "네이버",
-            "다음",
-            "페이스북"});
-            this.site.Location = new System.Drawing.Point(69, 30);
-            this.site.Name = "site";
-            this.site.Size = new System.Drawing.Size(98, 20);
-            this.site.TabIndex = 3;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_site_name,
+            this.col_id,
+            this.col_pw});
+            this.dataGridView1.Location = new System.Drawing.Point(3, 25);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(281, 132);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // col_site_name
+            // 
+            this.col_site_name.HeaderText = "사이트";
+            this.col_site_name.Name = "col_site_name";
+            this.col_site_name.ReadOnly = true;
+            // 
+            // col_id
+            // 
+            this.col_id.HeaderText = "ID";
+            this.col_id.Name = "col_id";
+            this.col_id.ReadOnly = true;
+            // 
+            // col_pw
+            // 
+            this.col_pw.HeaderText = "PW";
+            this.col_pw.Name = "col_pw";
+            this.col_pw.ReadOnly = true;
             // 
             // SettingForm
             // 
@@ -209,6 +225,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -220,14 +237,14 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button okbtn;
         private System.Windows.Forms.Button delebtn;
-        private System.Windows.Forms.ColumnHeader listsite;
-        private System.Windows.Forms.ColumnHeader listID;
-        private System.Windows.Forms.ColumnHeader listPW;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox site;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_site_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_pw;
     }
 }

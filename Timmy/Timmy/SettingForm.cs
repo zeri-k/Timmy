@@ -62,7 +62,7 @@ namespace Timmy
                     arr[1] = ID.Text;
                     arr[2] = PW.Text;
                     ListViewItem lvt = new ListViewItem(arr);
-                    listView1.Items.Add(lvt);
+                    //listView1.Items.Add(lvt);
                     site.Text = "";
                     ID.Text = "";
                     PW.Text = "";
@@ -71,6 +71,7 @@ namespace Timmy
 
         private void delebtn_Click(object sender, EventArgs e)
         {
+            /*
             if (listView1.SelectedItems.Count > 0)
             {
                 int index = listView1.FocusedItem.Index;
@@ -81,7 +82,7 @@ namespace Timmy
             {
                 MessageBox.Show("항목을 선택하세요");
             }
-
+            */
         }
 
         private void button1_Click(object sender, EventArgs e)
