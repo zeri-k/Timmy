@@ -7,8 +7,6 @@ namespace Timmy
 {
     class STT
     {
-
-
         public static string resultText = null;
 
         public static async Task<object> StreamingMicRecognizeAsync(int seconds)
