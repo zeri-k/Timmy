@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Google.Cloud.Speech.V1;
@@ -54,6 +51,8 @@ namespace Timmy
                         {
                             resultText = alternative.Transcript;
                             Console.WriteLine(resultText);
+                            MainForm mainForm = new MainForm();
+                            mainForm.txtView.Text += resultText + "\r\n";
                         }
                     }
                 }
