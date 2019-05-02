@@ -131,3 +131,8 @@ C:\Users\곽태민\Documents\Capstone\Timmy\Timmy\obj\Debug\Timmy.csproj.CoreCom
 C:\Users\곽태민\Documents\Capstone\Timmy\Timmy\obj\Debug\Timmy.csproj.CopyComplete
 C:\Users\곽태민\Documents\Capstone\Timmy\Timmy\obj\Debug\Timmy.exe
 C:\Users\곽태민\Documents\Capstone\Timmy\Timmy\obj\Debug\Timmy.pdb
+C:\Users\곽태민\Documents\Capstone\Timmy\Timmy\obj\Debug\Timmy.SettingForm.resources
+C:\Users\곽태민\Documents\Capstone\Timmy\Timmy\obj\Debug\Timmy.StartForm.resources
+C:\Users\곽태민\Documents\Capstone\Timmy\Timmy\obj\Debug\Timmy.InternetListForm.resources
+C:\Users\곽태민\Documents\Capstone\Timmy\Timmy\obj\Debug\Timmy.helpForm.resources
+C:\Users\곽태민\Documents\Capstone\Timmy\Timmy\obj\Debug\Timmy.InformationForm.resources
