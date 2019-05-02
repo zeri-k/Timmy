@@ -11,7 +11,7 @@ namespace Timmy
 {
     class TTS
     {
-        Selenium sel = new Selenium();
+
         public SpeechSynthesizer ss;
         public void tts(string txt)
         {
@@ -23,7 +23,7 @@ namespace Timmy
                 ss.SpeakAsync("네 티미입니다");
                 
             }
-
+            /*
             //인터넷 연결
             if (txt.Contains("네이버"))
             {
@@ -41,7 +41,7 @@ namespace Timmy
             {
                 exPlore(txt, "google.com", "구글");
             }
-
+            */
 
             //프로세서 
             if (txt.Contains("엑셀"))
@@ -75,6 +75,7 @@ namespace Timmy
             }
           
         }
+        /*
         private void exPlore(string txt, string url, string key) //인터넷 키고,끄기
         {
             
@@ -95,7 +96,7 @@ namespace Timmy
             }
 
         }
-
+        */
         private void doProgram(string filename, string txt, string key) //프로세서 실행, 종료 (계산기,콘솔x 32bit??)
         {
             ss = new SpeechSynthesizer();
