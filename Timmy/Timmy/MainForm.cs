@@ -18,6 +18,11 @@ using System.Diagnostics;
 
 namespace Timmy
 {
+    struct parser
+    {
+        string link;
+        string name;
+    }
     public partial class MainForm : Form
     {
         Selenium sel = new Selenium();
