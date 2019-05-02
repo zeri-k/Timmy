@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
+using IBatisNet.Common;
+using IBatisNet.DataMapper;
+using System.Windows.Forms;
 
 namespace Timmy
 {
@@ -11,7 +14,17 @@ namespace Timmy
     {
         public static void connection()
         {
-            string strConn = @"Data Source=..\..\..\..\TimmyDB.db";
+            try
+            {
+                IList<Mapper> list = Mapper.Instance().QueryForList<Mapper>("SelectMapper", null);
+                //dataGridView1.DataSource = list;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            /*
+            string strConn = @"Data Source=..\..\..\TimmyDB.db";
             using (SQLiteConnection conn = new SQLiteConnection(strConn))
             {
                 conn.Open();
@@ -20,6 +33,7 @@ namespace Timmy
                 //cmd.ExecuteNonQuery();
                 conn.Close();
             }
+            */
         }
     }
 }
