@@ -6,6 +6,7 @@ using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
+using System.Data.SQLite;
 
 namespace Timmy
 {
@@ -42,6 +43,9 @@ namespace Timmy
 
             TTS tts = new TTS();
             tts.tts(txt);
+            
+            DAO.connection();
+
             string[,] parser = new string[,] { { "네이버", "naver.com" }, { "다음", "daum.net" }, { "구글", "google.com" } };
 
             if (txt.Contains("켜"))
@@ -96,7 +100,6 @@ namespace Timmy
         }
         public void internet()
         {
-
             ser.HideCommandPromptWindow = true;
             driver = new ChromeDriver(ser, new ChromeOptions());
             driver.Manage().Window.Maximize();  
@@ -107,7 +110,6 @@ namespace Timmy
         public void adr(string url) 
         {
             driver.Url = ("https://www." + url + "/");
-
         }
 
         // 검색어입력

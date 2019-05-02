@@ -26,14 +26,14 @@ namespace Timmy
                     {
                         Config = new RecognitionConfig()
                         {
-                            Encoding =
-                            RecognitionConfig.Types.AudioEncoding.Linear16,
+                            Encoding = RecognitionConfig.Types.AudioEncoding.Linear16,
                             SampleRateHertz = 16000,
                             LanguageCode = "ko-KR",
                             Model = "command_and_search",
-                            SpeechContexts = { new SpeechContext() { Phrases = { "티미야" } } }
+                            UseEnhanced = true,
+                            SpeechContexts = { new SpeechContext() { Phrases = { "티미야","인터넷", "켜", "꺼" } } }
                         },
-                        InterimResults = true,
+                        InterimResults = true
                     }
                 });
             // 응답이 도착하면 인쇄하십시오.
@@ -49,8 +49,6 @@ namespace Timmy
                         {
                             resultText = alternative.Transcript;
                             Console.WriteLine(resultText);
-                            MainForm mainForm = new MainForm();
-                            mainForm.txtView.Text += resultText + "\r\n";
                         }
                     }
                 }
