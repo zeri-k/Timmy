@@ -159,7 +159,7 @@
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(235, 50);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(283, 158);
+            this.groupBox2.Size = new System.Drawing.Size(372, 158);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ID/PW 등록 목록";
@@ -187,7 +187,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(281, 132);
+            this.dataGridView1.Size = new System.Drawing.Size(348, 132);
             this.dataGridView1.TabIndex = 0;
             // 
             // col_site_name
@@ -212,7 +212,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 230);
+            this.ClientSize = new System.Drawing.Size(636, 248);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.delebtn);
             this.Controls.Add(this.okbtn);

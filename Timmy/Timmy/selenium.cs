@@ -13,17 +13,11 @@ namespace Timmy
 {
     class Selenium
     {
-
-
-       
-        
         public void internet(string url)
         {
-
         }
         public void exit()
         {
-
         }
         /*
         public void weather()
