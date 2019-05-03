@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Google.Cloud.Speech.V1;
@@ -10,8 +7,6 @@ namespace Timmy
 {
     class STT
     {
-
-
         public static string resultText = null;
 
         public static async Task<object> StreamingMicRecognizeAsync(int seconds)
@@ -31,14 +26,14 @@ namespace Timmy
                     {
                         Config = new RecognitionConfig()
                         {
-                            Encoding =
-                            RecognitionConfig.Types.AudioEncoding.Linear16,
+                            Encoding = RecognitionConfig.Types.AudioEncoding.Linear16,
                             SampleRateHertz = 16000,
                             LanguageCode = "ko-KR",
                             Model = "command_and_search",
-                            SpeechContexts = { new SpeechContext() { Phrases = { "티미야" } } }
+                            UseEnhanced = true,
+                            SpeechContexts = { new SpeechContext() { Phrases = { "티미야","인터넷", "켜", "꺼" } } }
                         },
-                        InterimResults = true,
+                        InterimResults = true
                     }
                 });
             // 응답이 도착하면 인쇄하십시오.

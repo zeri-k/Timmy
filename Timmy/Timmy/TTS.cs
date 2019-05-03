@@ -1,53 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Speech.Synthesis;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace Timmy
 {
     class TTS
     {
+
         public SpeechSynthesizer ss;
+        public SHDocVw.InternetExplorer ie;
         public void tts(string txt)
         {
-            string a;
+            ss = new SpeechSynthesizer();
+            MainForm mainform = new MainForm();
+
             if (txt.Contains("티미"))
             {
                 ss.SpeakAsync("네 티미입니다");
+
             }
-            Selenium sel = new Selenium();
-            if (txt.Contains("인터넷"))
+            /*
+            //인터넷 연결
+
+            if (txt.Contains("네이버"))
             {
-                if (txt.Contains("네이버"))
-                {
-                    sel.internet("naver");
-                    if (txt.Contains("노래순위"))
-                    {
-                        sel.navermusic10();
-                    }
-                }
-                if (txt.Contains("다음"))
-                {
-                    sel.internet("daum");
-                }
-                if (txt.Contains("구글"))
-                { 
-                    sel.internet("google");
-                    if(txt.Contains("로그인"))
-                    {
-                        sel.googlelogin();
-                    }
-                }
-                if (txt.Contains("꺼"))
-                {
-                    sel.chromeexit();
-                }
+                exPlore(txt, "naver.com", "네이버");
             }
+            if (txt.Contains("경민대"))
+            {
+                exPlore(txt, "kyungmin.ac.kr", "경민대");
+            }
+            if (txt.Contains("다음"))
+            {
+                exPlore(txt, "daum.net", "다음");
+            }
+            if (txt.Contains("구글"))
+            {
+                exPlore(txt, "google.com", "구글");
+            }
+            */
+
             //프로세서 
+
             if (txt.Contains("엑셀"))
             {
                 doProgram("excel", txt, "엑셀");
@@ -64,6 +57,8 @@ namespace Timmy
             {
                 doProgram("calc", txt, "계산기");
             }
+
+            //컴퓨터 제어
             if (txt.Contains("컴퓨터"))
             {
                 if (txt.Contains("꺼"))
@@ -77,10 +72,30 @@ namespace Timmy
                     Process.Start("shutdown.exe", "-r -t 03");
                 }
             }
-            MainForm mainForm = new MainForm();
-            mainForm.txtView.Text = "";
-        }
 
+        }
+        /*
+        private void exPlore(string txt, string url, string key) //인터넷 키고,끄기
+        {
+
+
+            if (txt.Contains("켜"))
+            {
+                ss.SpeakAsync(key + "실행");
+                sel.internet(url);
+            }
+            else if (txt.Contains("꺼"))
+            {
+                ss.SpeakAsync("인터넷 종료");
+                sel.chromeexit();
+            }
+            if (txt.Contains("a"))
+            {
+                sel.weather();
+            }
+
+        }
+        */
         private void doProgram(string filename, string txt, string key) //프로세서 실행, 종료 (계산기,콘솔x 32bit??)
         {
             ss = new SpeechSynthesizer();
@@ -89,6 +104,7 @@ namespace Timmy
             {
                 ss.SpeakAsync(key + "실행");
                 Process.Start(filename);
+
             }
             else if (txt.Contains("꺼")) //종료
             {

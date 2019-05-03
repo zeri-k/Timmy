@@ -1,31 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.IE;
 using System.Diagnostics;
 
 namespace Timmy
 {
     class Selenium
     {
-        
-        IWebDriver driver = new ChromeDriver();
-        MainForm main = new MainForm();
 
-        public void internet(string a)
+
+       
+        
+        public void internet(string url)
         {
-                driver.Url = ("https://www."+a+"/");//주소 입력
-                driver.Manage().Window.Maximize();  //창크기 최대
-                
 
         }
+        public void exit()
+        {
+
+        }
+        /*
         public void weather()
         {
+            Thread.Sleep(1000);
             string result;
             IWebElement q = driver.FindElement(By.Id("query"));
             q.SendKeys("날씨");
@@ -49,7 +47,6 @@ namespace Timmy
             string sing;
             for (int i = 1; i <= 10; i++)
             {
-
                 var ranksong = rank.FindElement(By.XPath("//*[@id='main_pack']/div[2]/div[2]/ol/li[" + i + "]/div/div[1]/div[2]/div[1]/a"));  //노래 이름
                 var ranksinger = rank.FindElement(By.XPath("//*[@id='main_pack']/div[2]/div[2]/ol/li[" + i + "]/div/div[1]/div[2]/div[2]/a[1]")); //가수
 
@@ -79,8 +76,6 @@ namespace Timmy
         public void facebook()  //페이스북 로그인
         {
 
-  
-
             driver.Url = "https://www.facebook.com/";
 
             IWebElement email = driver.FindElement(By.Id("email"));
@@ -97,9 +92,24 @@ namespace Timmy
 
         public void chromeexit() //크롬종료  - 인터넷꺼
         {
+<<<<<<< HEAD
             driver.Quit();
         }
+=======
+            string ch = "chrome";
+            var pro = Process.GetProcessesByName(ch);
+            Process cu = Process.GetCurrentProcess();
+            foreach (Process proc in pro)
+            {
+>>>>>>> stt
 
+                if (proc.Id != cu.Id)
+
+                    proc.Kill();
+
+            }
+        }
+        */
         // driver.Url = "https://www.melon.com/chart/index.htm";
 
 
@@ -118,10 +128,10 @@ namespace Timmy
         Thread.Sleep(500);
         driver.Navigate().Back();
         */
-  
 
-       
-     
+
+
+
 
         /*
         // 최신노래제목 (네이버1~100위 )
@@ -155,8 +165,8 @@ namespace Timmy
 
         */
 
-           
+
 
 
     }
-    }
+}
