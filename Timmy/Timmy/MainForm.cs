@@ -6,7 +6,7 @@ using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
-using System.Data.SQLite;
+using System.Drawing;
 
 namespace Timmy
 {
@@ -44,7 +44,7 @@ namespace Timmy
             TTS tts = new TTS();
             tts.tts(txt);
             
-            DAO.connection();
+            DAO.Connection();
 
             string[,] parser = new string[,] { { "네이버", "naver.com" }, { "다음", "daum.net" }, { "구글", "google.com" } };
 
@@ -79,6 +79,7 @@ namespace Timmy
                         adr(parser[i, 1]);
                     }
                 }
+               // driver.SwitchTo().Window()
             }
 
             if (txt.Contains("검색"))
@@ -151,6 +152,51 @@ namespace Timmy
                 q.SendKeys(searchword);                       
                 driver.FindElement(By.Id("search_btn")).Click();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+           
+        }
+
+        private void 로그인관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            SettingForm setform = new SettingForm();
+            setform.StartPosition = FormStartPosition.Manual;
+            setform.Location = new Point(380, 220);
+
+            setform.Show();
+
+        }
+
+        private void 인터넷주소목록ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+           InternetListForm listForm = new InternetListForm();
+            listForm.StartPosition = FormStartPosition.Manual;
+            listForm.Location = new Point(380, 220);
+
+            listForm.Show();
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            helpForm form = new helpForm();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = new Point(500, 220);
+
+            form.ShowDialog();
+        }
+
+        private void 프로그램정보ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InformationForm form = new InformationForm();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = new Point(500, 220);
+
+            form.ShowDialog();
         }
     }
 }
