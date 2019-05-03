@@ -14,8 +14,10 @@ namespace Timmy
 {
     public partial class InternetListForm : Form
     {
+        IList<Site> list;
         public InternetListForm()
         {
+            this.list = Mapper.Instance().QueryForList<Site>("SelectSite", null);
             InitializeComponent();
         }
 
@@ -32,13 +34,17 @@ namespace Timmy
         {
             try
             {
-                IList<Site> list = Mapper.Instance().QueryForList<Site>("SelectSite", null);
                 dgvSite.DataSource = list;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void dgvSite_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

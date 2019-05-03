@@ -73,7 +73,6 @@
             this.label5.Size = new System.Drawing.Size(20, 15);
             this.label5.TabIndex = 1;
             this.label5.Text = "ID";
-            this.label5.Click += new System.EventHandler(this.label4_Click);
             // 
             // label6
             // 
@@ -83,7 +82,6 @@
             this.label6.Size = new System.Drawing.Size(31, 15);
             this.label6.TabIndex = 1;
             this.label6.Text = "PW";
-            this.label6.Click += new System.EventHandler(this.label4_Click);
             // 
             // groupBox1
             // 
@@ -124,7 +122,6 @@
             this.label1.Size = new System.Drawing.Size(67, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "사이트명";
-            this.label1.Click += new System.EventHandler(this.label4_Click);
             // 
             // okbtn
             // 
@@ -206,6 +203,7 @@
             this.dgvLogin.RowTemplate.Height = 27;
             this.dgvLogin.Size = new System.Drawing.Size(319, 172);
             this.dgvLogin.TabIndex = 0;
+            this.dgvLogin.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLogin_CellClick);
             // 
             // SettingForm
             // 

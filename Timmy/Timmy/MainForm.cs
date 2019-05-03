@@ -79,7 +79,6 @@ namespace Timmy
                         adr(parser[i, 1]);
                     }
                 }
-               // driver.SwitchTo().Window()
             }
 
             if (txt.Contains("검색"))

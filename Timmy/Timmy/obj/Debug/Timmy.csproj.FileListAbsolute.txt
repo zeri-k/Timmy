@@ -10,12 +10,6 @@ D:\Git_project\Capstone\Timmy\Timmy\obj\Debug\Timmy.SettingForm.resources
 D:\Git_project\Capstone\Timmy\Timmy\obj\Debug\Timmy.StartForm.resources
 D:\Git_project\Capstone\Timmy\Timmy\obj\Debug\Timmy.csproj.GenerateResource.cache
 D:\Git_project\Capstone\Timmy\Timmy\obj\Debug\Timmy.csproj.CoreCompileInputs.cache
-D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\grpc_csharp_ext.x86.dll
-D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\grpc_csharp_ext.x64.dll
-D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\libgrpc_csharp_ext.x86.so
-D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\libgrpc_csharp_ext.x64.so
-D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\libgrpc_csharp_ext.x86.dylib
-D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\libgrpc_csharp_ext.x64.dylib
 D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\providers.config
 D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\SqlMap.config
 D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\Timmy.exe.config
@@ -93,3 +87,9 @@ D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\System.Linq.Async.xml
 D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\System.Memory.xml
 D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\grpc_csharp_ext.x86.dll
+D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\grpc_csharp_ext.x64.dll
+D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\libgrpc_csharp_ext.x86.so
+D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\libgrpc_csharp_ext.x64.so
+D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\libgrpc_csharp_ext.x86.dylib
+D:\Git_project\Capstone\Timmy\Timmy\bin\Debug\libgrpc_csharp_ext.x64.dylib

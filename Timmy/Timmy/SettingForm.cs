@@ -14,8 +14,10 @@ namespace Timmy
 {
     public partial class SettingForm : Form
     {
+        IList<Login> list;
         public SettingForm()
         {
+            this.list = Mapper.Instance().QueryForList<Login>("SelectLogin", null);
             InitializeComponent();
         }
 
@@ -23,7 +25,6 @@ namespace Timmy
         {
             try
             {
-                IList<Login> list = Mapper.Instance().QueryForList<Login>("SelectLogin", null);
                 dgvLogin.DataSource = list;
             }
             catch (Exception ex)
@@ -32,67 +33,58 @@ namespace Timmy
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void 네이버관리ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void 구글ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void okbtn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Login login = new Login();
 
-            String[] arr = new String[3];
-
-                    arr[0] = site.Text;
-                    arr[1] = ID.Text;
-                    arr[2] = PW.Text;
-                    ListViewItem lvt = new ListViewItem(arr);
-                    //listView1.Items.Add(lvt);
-                    site.Text = "";
-                    ID.Text = "";
-                    PW.Text = "";
+                login.siteName = site.Text;
+                login.id = ID.Text;
+                login.pw = PW.Text;
+                
+                Mapper.Instance().Insert("setLoginIns", login);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                site.Text = "";
+                ID.Text = "";
+                PW.Text = "";
+                list = Mapper.Instance().QueryForList<Login>("SelectLogin", null);
+                dgvLogin.DataSource = list;
+            }
+            
 
         }
 
         private void delebtn_Click(object sender, EventArgs e)
         {
-            /*
-            if (listView1.SelectedItems.Count > 0)
+            try
             {
-                int index = listView1.FocusedItem.Index;
-                listView1.Items.RemoveAt(index);
-                MessageBox.Show("삭제되었습니다");
+                Login login = new Login();
+
+                login.siteName = site.Text;
+                login.id = ID.Text;
+                login.pw = PW.Text;
+
+                Mapper.Instance().Delete("setLoginDel", login);
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("항목을 선택하세요");
+                MessageBox.Show(ex.ToString());
             }
-            */
+            finally
+            {
+                site.Text = "";
+                ID.Text = "";
+                PW.Text = "";
+                list = Mapper.Instance().QueryForList<Login>("SelectLogin", null);
+                dgvLogin.DataSource = list;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -102,6 +94,15 @@ namespace Timmy
             main.StartPosition = FormStartPosition.Manual;
             main.Location = new Point(300, 150);
             main.Show();
+        }
+
+        private void dgvLogin_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selectedRowIndex;
+            selectedRowIndex = dgvLogin.CurrentCell.RowIndex;
+            site.Text = dgvLogin.Rows[selectedRowIndex].Cells[0].Value.ToString();
+            ID.Text = dgvLogin.Rows[selectedRowIndex].Cells[1].Value.ToString();
+            PW.Text = dgvLogin.Rows[selectedRowIndex].Cells[2].Value.ToString();
         }
     }
 }

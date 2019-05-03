@@ -22,6 +22,14 @@
       select site_name,id ,pw from login;
     </select>
 
+    <insert id="setLoginIns" parameterClass="Login">
+      insert into login(site_name,id ,pw) values (#siteName#, #id#, #pw#)
+    </insert>
+
+    <delete id="setLoginDel" parameterClass="Login">
+      delete from login where site_name = #siteName# and id = #id#
+    </delete>
+
   </statements>
 
 </sqlMap>

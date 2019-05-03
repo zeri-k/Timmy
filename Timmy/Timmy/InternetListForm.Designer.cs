@@ -83,6 +83,7 @@
             this.dgvSite.RowTemplate.Height = 27;
             this.dgvSite.Size = new System.Drawing.Size(505, 205);
             this.dgvSite.TabIndex = 9;
+            this.dgvSite.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSite_CellClick);
             // 
             // InternetListForm
             // 
