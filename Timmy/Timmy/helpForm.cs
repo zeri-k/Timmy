@@ -21,5 +21,10 @@ namespace Timmy
         {
             this.Visible = false;
         }
+
+        private void helpForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>이페이지에서는 Timmy에대한 자세한 사용법을 설명합니다
+
+윈도우 어플리케이션
+실행 하고자하는 어플리케이션을 티미에게 말합니다 - ex)메모장 켜
+끄고싶은 어플리케이션을 티미에게 말합니다 - ex)메모장 꺼
+
+인터넷 사용
+이용하고싶은 인터넷 포털사이트를 티미에게 말합니다 - ex)구글 켜
+원하는 정보의 키워드를 티미에게 말합니다 - ex)날씨 검색
+</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

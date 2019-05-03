@@ -93,7 +93,6 @@ namespace Timmy
         {
             
         }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
             
@@ -117,13 +116,25 @@ namespace Timmy
         {
             if (searchword == "날씨")
             {
-                Thread.Sleep(1000);
-                string result;
-                IWebElement q = driver.FindElement(By.Id("query"));
-                q.SendKeys(searchword);
-                driver.FindElement(By.Id("search_btn")).Click();
-                var wt = driver.FindElement(By.ClassName("cast_txt"));
-                resultbox.Text = wt.Text;
+                try
+                {
+                    Thread.Sleep(1000);
+                    IWebElement q = driver.FindElement(By.Id("query"));
+                    q.SendKeys(searchword);
+                    driver.FindElement(By.Id("search_btn")).Click();
+                    var wt = driver.FindElement(By.ClassName("cast_txt"));
+                    resultbox.Text = wt.Text;
+                }
+                catch(Exception)
+                {
+                    Thread.Sleep(1000);
+                    IWebElement q = driver.FindElement(By.Id("nx_query"));
+                    q.Clear();
+                    q.SendKeys(searchword);
+                    driver.FindElement(By.ClassName("bt_search")).Click();
+                    var wt = driver.FindElement(By.ClassName("cast_txt"));
+                    resultbox.Text = wt.Text;
+                }
             }
             else if(searchword =="최신노래")
             {
@@ -131,32 +142,37 @@ namespace Timmy
                     q.SendKeys(searchword);                        
                     driver.FindElement(By.Id("search_btn")).Click();
                     Thread.Sleep(3000);
-
                     var rank = driver.FindElement(By.ClassName("list_top_music"));
                     string song;
                     string sing;
                     for (int i = 1; i <= 10; i++)
                     {
                         var ranksong = rank.FindElement(By.XPath("//*[@id='main_pack']/div[2]/div[2]/ol/li[" + i + "]/div/div[1]/div[2]/div[1]/a")); 
-                        var ranksinger = rank.FindElement(By.XPath("//*[@id='main_pack']/div[2]/div[2]/ol/li[" + i + "]/div/div[1]/div[2]/div[2]/a[1]")); 
+                        var ranksinger = rank.FindElement(By.XPath("//*[@id='main_pack']/div[2]/div[2]/ol/li[" + i + "]/div/div[1]/div[2]/div[2]/a[1]"));
 
-                        song = ranksong.Text;
+                    song = ranksong.Text;
                         sing = ranksinger.Text;
                         resultbox.AppendText(i + "위  " + sing + "  -  "+song + Environment.NewLine);
                     }
             }
             else
             {
+                try { 
                 IWebElement q = driver.FindElement(By.Id("query"));
                 q.SendKeys(searchword);                       
                 driver.FindElement(By.Id("search_btn")).Click();
+                }catch(Exception)
+                {
+                    IWebElement q = driver.FindElement(By.Id("nx_query"));
+                    q.Clear();
+                    q.SendKeys(searchword);
+                    driver.FindElement(By.ClassName("bt_search")).Click();
+                }
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-           
         }
 
         private void 로그인관리ToolStripMenuItem_Click(object sender, EventArgs e)
