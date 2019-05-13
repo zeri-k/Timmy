@@ -10,8 +10,8 @@
 
   <resultMaps>
     <resultMap id="SiteResultMap" class="Site">
-      <result column="site_name" property="사이트이름"/>
-      <result column="site_link" property="링크"/>
+      <result column="site_name" property="siteName"/>
+      <result column="site_link" property="url"/>
     </resultMap>
   </resultMaps>
   
@@ -20,6 +20,14 @@
     <select id="SelectSite"  resultMap="SiteResultMap">
       select site_name, site_link from site;
     </select>
+
+    <insert id="setSiteIns" parameterClass="Site">
+      insert into site(site_name,site_link) values (#siteName#, #url#)
+    </insert>
+
+    <delete id="setSiteDel" parameterClass="Site">
+      delete from site where site_name = #siteName# and site_link = #url#
+    </delete>
   
   </statements>
   
