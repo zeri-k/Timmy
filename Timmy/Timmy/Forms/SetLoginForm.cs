@@ -104,5 +104,10 @@ namespace Timmy.Forms
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void dgvLogin_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
