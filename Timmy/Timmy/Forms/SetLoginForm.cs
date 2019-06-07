@@ -104,5 +104,11 @@ namespace Timmy.Forms
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void SetLoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visible = false;
+        }
     }
 }

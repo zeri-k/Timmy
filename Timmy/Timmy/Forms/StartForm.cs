@@ -12,6 +12,10 @@ namespace Timmy.Forms
 {
     public partial class StartForm : Form
     {
+        MainForm main;
+        SetLoginForm settingForm;
+        SetSiteForm listForm;
+
         public StartForm()
         {
             InitializeComponent();
@@ -20,10 +24,44 @@ namespace Timmy.Forms
         private void btnStart_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            MainForm main = new MainForm();
+            if(main == null)
+                main = new MainForm();
             main.StartPosition = FormStartPosition.Manual;
             main.Location = new Point(300, 150);
 
+            main.Show();
+        }
+
+        private void tsmExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void tsmLogin_Click(object sender, EventArgs e)
+        {
+            if (settingForm == null)
+                settingForm = new SetLoginForm();
+            settingForm.Show();
+        }
+
+        private void tsmSite_Click(object sender, EventArgs e)
+        {
+            if (listForm == null)
+                listForm = new SetSiteForm();
+            listForm.Show();
+        }
+
+        private void tsmOpen_Click(object sender, EventArgs e)
+        {
+            if (main == null)
+                main = new MainForm();
+            main.Show();
+        }
+
+        private void ntfIcon_DoubleClick(object sender, EventArgs e)
+        {
+            if (main == null)
+                main = new MainForm();
             main.Show();
         }
     }

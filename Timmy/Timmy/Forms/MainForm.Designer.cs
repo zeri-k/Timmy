@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.resultbox = new System.Windows.Forms.TextBox();
-            this.ttsButton = new System.Windows.Forms.Button();
             this.txtView = new System.Windows.Forms.TextBox();
             this.btnSpeechStart = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
@@ -37,6 +37,7 @@
             this.메뉴ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSite = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.도움말ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmInfo = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,33 +47,26 @@
             // resultbox
             // 
             this.resultbox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.resultbox.Location = new System.Drawing.Point(432, 74);
+            this.resultbox.Location = new System.Drawing.Point(252, 52);
             this.resultbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.resultbox.Multiline = true;
             this.resultbox.Name = "resultbox";
+            this.resultbox.ReadOnly = true;
             this.resultbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.resultbox.Size = new System.Drawing.Size(349, 285);
+            this.resultbox.Size = new System.Drawing.Size(529, 344);
             this.resultbox.TabIndex = 9;
-            // 
-            // ttsButton
-            // 
-            this.ttsButton.Location = new System.Drawing.Point(235, 74);
-            this.ttsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ttsButton.Name = "ttsButton";
-            this.ttsButton.Size = new System.Drawing.Size(154, 65);
-            this.ttsButton.TabIndex = 8;
-            this.ttsButton.Text = "tts";
-            this.ttsButton.UseVisualStyleBackColor = true;
-            this.ttsButton.Click += new System.EventHandler(this.ttsButton_Click);
             // 
             // txtView
             // 
-            this.txtView.Location = new System.Drawing.Point(22, 167);
+            this.txtView.Location = new System.Drawing.Point(80, 376);
             this.txtView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtView.Multiline = true;
             this.txtView.Name = "txtView";
-            this.txtView.Size = new System.Drawing.Size(382, 192);
+            this.txtView.ReadOnly = true;
+            this.txtView.Size = new System.Drawing.Size(58, 23);
             this.txtView.TabIndex = 7;
+            this.txtView.Visible = false;
+            this.txtView.TextChanged += new System.EventHandler(this.txtView_TextChanged);
             // 
             // btnSpeechStart
             // 
@@ -81,7 +75,7 @@
             this.btnSpeechStart.Name = "btnSpeechStart";
             this.btnSpeechStart.Size = new System.Drawing.Size(143, 65);
             this.btnSpeechStart.TabIndex = 6;
-            this.btnSpeechStart.Text = "음성 인식 시작";
+            this.btnSpeechStart.Text = "음성 인식 시작(&T)";
             this.btnSpeechStart.UseVisualStyleBackColor = true;
             this.btnSpeechStart.Click += new System.EventHandler(this.btnSpeechStart_Click);
             // 
@@ -103,8 +97,10 @@
             // 
             this.메뉴ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmLogin,
-            this.tsmSite});
+            this.tsmSite,
+            this.tsmExit});
             this.메뉴ToolStripMenuItem.Name = "메뉴ToolStripMenuItem";
+            this.메뉴ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.T)));
             this.메뉴ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
             this.메뉴ToolStripMenuItem.Text = "메뉴";
             // 
@@ -112,15 +108,22 @@
             // 
             this.tsmLogin.Name = "tsmLogin";
             this.tsmLogin.Size = new System.Drawing.Size(216, 26);
-            this.tsmLogin.Text = "로그인관리";
+            this.tsmLogin.Text = "로그인관리(&L)";
             this.tsmLogin.Click += new System.EventHandler(this.tsmLogin_Click);
             // 
             // tsmSite
             // 
             this.tsmSite.Name = "tsmSite";
             this.tsmSite.Size = new System.Drawing.Size(216, 26);
-            this.tsmSite.Text = "인터넷주소 목록";
+            this.tsmSite.Text = "인터넷주소 목록(&I)";
             this.tsmSite.Click += new System.EventHandler(this.tsmSite_Click);
+            // 
+            // tsmExit
+            // 
+            this.tsmExit.Name = "tsmExit";
+            this.tsmExit.Size = new System.Drawing.Size(216, 26);
+            this.tsmExit.Text = "종료(&E)";
+            this.tsmExit.Click += new System.EventHandler(this.tsmExit_Click);
             // 
             // 도움말ToolStripMenuItem
             // 
@@ -135,7 +138,7 @@
             // 
             this.tsmHelp.Name = "tsmHelp";
             this.tsmHelp.Size = new System.Drawing.Size(216, 26);
-            this.tsmHelp.Text = "help";
+            this.tsmHelp.Text = "도움말(&H)";
             this.tsmHelp.Click += new System.EventHandler(this.tsmHelp_Click);
             // 
             // tsmInfo
@@ -151,12 +154,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(808, 409);
             this.Controls.Add(this.resultbox);
-            this.Controls.Add(this.ttsButton);
             this.Controls.Add(this.txtView);
             this.Controls.Add(this.btnSpeechStart);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Timmy";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -167,7 +172,6 @@
         #endregion
 
         public System.Windows.Forms.TextBox resultbox;
-        private System.Windows.Forms.Button ttsButton;
         public System.Windows.Forms.TextBox txtView;
         private System.Windows.Forms.Button btnSpeechStart;
         private System.Windows.Forms.ColorDialog colorDialog1;
@@ -178,6 +182,7 @@
         private System.Windows.Forms.ToolStripMenuItem 도움말ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmHelp;
         private System.Windows.Forms.ToolStripMenuItem tsmInfo;
+        private System.Windows.Forms.ToolStripMenuItem tsmExit;
     }
 }
 

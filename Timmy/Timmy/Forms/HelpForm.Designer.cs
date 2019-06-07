@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelpForm));
             this.btnOk = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(221, 336);
+            this.btnOk.Location = new System.Drawing.Point(343, 376);
             this.btnOk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(86, 29);
@@ -51,17 +52,18 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(295, 318);
+            this.textBox1.Size = new System.Drawing.Size(422, 358);
             this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "a\r\nb\r\nc\r\n";
+            this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // HelpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(318, 374);
+            this.ClientSize = new System.Drawing.Size(441, 418);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.textBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HelpForm";
             this.Text = "도움말";
             this.ResumeLayout(false);
