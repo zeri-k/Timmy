@@ -47,23 +47,23 @@
             // resultbox
             // 
             this.resultbox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.resultbox.Location = new System.Drawing.Point(252, 52);
-            this.resultbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.resultbox.Location = new System.Drawing.Point(288, 65);
+            this.resultbox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.resultbox.Multiline = true;
             this.resultbox.Name = "resultbox";
             this.resultbox.ReadOnly = true;
             this.resultbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.resultbox.Size = new System.Drawing.Size(529, 344);
+            this.resultbox.Size = new System.Drawing.Size(508, 330);
             this.resultbox.TabIndex = 9;
             // 
             // txtView
             // 
-            this.txtView.Location = new System.Drawing.Point(80, 376);
+            this.txtView.Location = new System.Drawing.Point(91, 470);
             this.txtView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtView.Multiline = true;
             this.txtView.Name = "txtView";
             this.txtView.ReadOnly = true;
-            this.txtView.Size = new System.Drawing.Size(58, 23);
+            this.txtView.Size = new System.Drawing.Size(66, 28);
             this.txtView.TabIndex = 7;
             this.txtView.Visible = false;
             this.txtView.TextChanged += new System.EventHandler(this.txtView_TextChanged);

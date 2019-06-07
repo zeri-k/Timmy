@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetLoginForm));
+
             this.tbxId = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tbxPw = new System.Windows.Forms.TextBox();
@@ -51,35 +52,33 @@
             // 
             // tbxId
             // 
-            this.tbxId.Location = new System.Drawing.Point(77, 70);
-            this.tbxId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbxId.Location = new System.Drawing.Point(67, 56);
             this.tbxId.Name = "tbxId";
-            this.tbxId.Size = new System.Drawing.Size(114, 25);
+            this.tbxId.Size = new System.Drawing.Size(100, 21);
             this.tbxId.TabIndex = 0;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(26, 108);
+            this.label6.Location = new System.Drawing.Point(23, 86);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 15);
+            this.label6.Size = new System.Drawing.Size(23, 12);
             this.label6.TabIndex = 1;
             this.label6.Text = "PW";
             // 
             // tbxPw
             // 
-            this.tbxPw.Location = new System.Drawing.Point(77, 104);
-            this.tbxPw.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbxPw.Location = new System.Drawing.Point(67, 83);
             this.tbxPw.Name = "tbxPw";
-            this.tbxPw.Size = new System.Drawing.Size(114, 25);
+            this.tbxPw.Size = new System.Drawing.Size(100, 21);
             this.tbxPw.TabIndex = 0;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 74);
+            this.label5.Location = new System.Drawing.Point(23, 59);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(20, 15);
+            this.label5.Size = new System.Drawing.Size(16, 12);
             this.label5.TabIndex = 1;
             this.label5.Text = "ID";
             // 
@@ -91,11 +90,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.tbxPw);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(30, 56);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Location = new System.Drawing.Point(26, 45);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(224, 161);
+            this.groupBox1.Size = new System.Drawing.Size(196, 129);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "자동화 ID/PW 입력";
@@ -108,18 +105,17 @@
             "네이버",
             "다음",
             "페이스북"});
-            this.cbxSite.Location = new System.Drawing.Point(77, 38);
-            this.cbxSite.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbxSite.Location = new System.Drawing.Point(67, 30);
             this.cbxSite.Name = "cbxSite";
-            this.cbxSite.Size = new System.Drawing.Size(114, 23);
+            this.cbxSite.Size = new System.Drawing.Size(100, 20);
             this.cbxSite.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 42);
+            this.label1.Location = new System.Drawing.Point(8, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 15);
+            this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 1;
             this.label1.Text = "사이트명";
             // 
@@ -127,9 +123,8 @@
             // 
             this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenu.Location = new System.Drawing.Point(1, 1);
-            this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(86, 29);
+            this.btnMenu.Size = new System.Drawing.Size(75, 23);
             this.btnMenu.TabIndex = 12;
             this.btnMenu.Text = "메뉴 가기";
             this.btnMenu.UseVisualStyleBackColor = true;
@@ -137,10 +132,9 @@
             // 
             // btnDel
             // 
-            this.btnDel.Location = new System.Drawing.Point(151, 225);
-            this.btnDel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDel.Location = new System.Drawing.Point(132, 180);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(86, 29);
+            this.btnDel.Size = new System.Drawing.Size(75, 23);
             this.btnDel.TabIndex = 10;
             this.btnDel.Text = "삭제";
             this.btnDel.UseVisualStyleBackColor = true;
@@ -148,10 +142,9 @@
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(41, 225);
-            this.btnInsert.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnInsert.Location = new System.Drawing.Point(36, 180);
             this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(86, 29);
+            this.btnInsert.Size = new System.Drawing.Size(75, 23);
             this.btnInsert.TabIndex = 11;
             this.btnInsert.Text = "입력";
             this.btnInsert.UseVisualStyleBackColor = true;
@@ -160,11 +153,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvLogin);
-            this.groupBox2.Location = new System.Drawing.Point(267, 56);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Location = new System.Drawing.Point(234, 45);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(323, 198);
+            this.groupBox2.Size = new System.Drawing.Size(283, 158);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ID/PW 등록 목록";
@@ -190,6 +181,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvLogin.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLogin.Location = new System.Drawing.Point(3, 25);
+            this.dgvLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvLogin.Name = "dgvLogin";
             this.dgvLogin.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -201,21 +193,22 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvLogin.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvLogin.RowTemplate.Height = 27;
-            this.dgvLogin.Size = new System.Drawing.Size(319, 172);
+            this.dgvLogin.Size = new System.Drawing.Size(279, 138);
             this.dgvLogin.TabIndex = 0;
             this.dgvLogin.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLogin_CellClick);
             // 
             // SetLoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 306);
+            this.ClientSize = new System.Drawing.Size(557, 245);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.groupBox2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "SetLoginForm";
             this.Text = "로그인 관리";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SetLoginForm_FormClosing);
