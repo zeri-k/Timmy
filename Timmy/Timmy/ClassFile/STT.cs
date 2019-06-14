@@ -53,7 +53,7 @@ namespace Timmy
                         {
                             resultText = alternative.Transcript;
                             
-                            Console.WriteLine(resultText);
+                            //Console.WriteLine(resultText);
                         }
                     }
                 }

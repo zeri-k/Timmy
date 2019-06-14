@@ -152,6 +152,7 @@
   <ItemGroup>
     <Compile Include="ClassFile\DAO.cs" />
     <Compile Include="ClassFile\Login.cs" />
+    <Compile Include="ClassFile\SeleniumDriver.cs" />
     <Compile Include="ClassFile\Site.cs" />
     <Compile Include="ClassFile\STT.cs" />
     <Compile Include="ClassFile\TTS.cs" />
@@ -193,10 +194,10 @@
       <DependentUpon>StartForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SettingForm.cs">
+    <Compile Include="Forms\SettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SettingForm.Designer.cs">
+    <Compile Include="Forms\SettingForm.Designer.cs">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\HelpForm.resx">
@@ -239,7 +240,7 @@
     <EmbeddedResource Include="providers.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingForm.resx">
+    <EmbeddedResource Include="Forms\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SqlMap.config">
