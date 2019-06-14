@@ -57,10 +57,10 @@ namespace Timmy
                     {
                         ss.SpeakAsync(list[i].siteName + "실행");
                         internet(list[i].url);
-
                     }
                 }
             }
+
             else if (txt.Contains("꺼"))
             {
                 if (txt.Contains("인터넷"))
@@ -89,6 +89,12 @@ namespace Timmy
                     }
                 }
             }
+           
+            if (txt.Contains("네이버메뉴"))
+            {
+                naverlist(txt.Replace("네이버메뉴", ""));
+            }
+
             if (txt.Contains("검색"))
             {
                 ss.SpeakAsync(txt);
@@ -115,7 +121,7 @@ namespace Timmy
                 }
                 else
                 {
-                    MessageBox.Show("나머지는개발중 ^^7");
+                    googlemailsearch(txt.Replace("메일확인", ""));
                 }
             }
             if (txt.Contains("새로고침"))
@@ -146,6 +152,7 @@ namespace Timmy
                 Thread.Sleep(1500);
                 driver.FindElement(By.XPath("//*[@id='passwordNext']/content/span")).Click();
             }
+
             catch(Exception)
             {
                 MessageBox.Show("환경설정 확인");
@@ -153,7 +160,6 @@ namespace Timmy
         }
         public void googlemail()
         {
-            string a;
             driver.Url = ("https://mail.google.com/");
             Thread.Sleep(3000);
             if (driver.Url.Contains("https://www.google.com/intl/ko/gmail/about/"))  //로그인 안됐을시
@@ -169,6 +175,33 @@ namespace Timmy
                 resultbox.AppendText(q.Text + Environment.NewLine);
             }
         }
+        public void googlemailsearch(string txt)
+        {
+            try { 
+            var list = driver.FindElements(By.ClassName("yW"));
+            var cont = list.Count;
+             string[] a = new string[cont];
+            if (driver.Url.Contains("https://mail.google.com/mail/u/0/#inbox"))
+            {
+                for (int i = 0; i < cont; i++)
+                {
+                    a[i] = list[i].Text  ;
+                    if (a[i]==(txt))
+                    {
+                        list[i].Click();
+                            var mailname = driver.FindElement(By.XPath("//div[class='ii gt']"));
+                            resultbox.AppendText(mailname.Text + Environment.NewLine);
+                        }
+                    }
+            }
+            }
+            catch(Exception)
+            {
+
+            }
+        }
+
+
         public void close(string url) // 탭 끄기
         {
             try
@@ -226,7 +259,7 @@ namespace Timmy
             txtView.Text = "";
                 if (driver == null)
             {
-                     driver = new ChromeDriver(ser, new ChromeOptions());
+                    driver = new ChromeDriver(ser, new ChromeOptions());
                     driver.Manage().Window.Maximize();
                     driver.Url = ("https://www." + url + "/");
             }
@@ -235,7 +268,7 @@ namespace Timmy
                             driver.SwitchTo().Window(driver.WindowHandles.Last());
                             ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
                             driver.SwitchTo().Window(driver.WindowHandles.Last());
-                          driver.Navigate().GoToUrl("https://www." + url + "/");
+                            driver.Navigate().GoToUrl("https://www." + url + "/");
                         
                 }
             }
@@ -245,6 +278,29 @@ namespace Timmy
                 driver.Manage().Window.Maximize();
                 driver.Url = ("https://www." + url + "/");
             }
+        }
+        public void naverlist(string txt)
+        {
+            Console.WriteLine("네이버메뉴" +txt);
+           var list = driver.FindElement(By.ClassName("area_navigation")).FindElements(By.ClassName("an_item"));
+           
+             var cont = list.Count;
+             string[] a = new string[16] {"메일","카페","블로그","지시인","쇼핑","페이","티비","사전","뉴스","증권","부동산","지도","영화","뮤직","책","웹툰"};
+             for (int i = 0; i < a.Length; i++)
+             { 
+                 if (a[i] == (txt))
+                 {
+                     list[i].Click();
+                 }
+             }
+        }
+        public void youtube(string txt)
+        {
+
+                IWebElement q = driver.FindElement(By.CssSelector("[id$=query]"));
+                q.Clear();
+                q.SendKeys(txt);
+                q.Submit();
         }
         //구글 검색
         public void googleSearch(string searchword)
@@ -470,7 +526,6 @@ namespace Timmy
         {
             e.Cancel = true;
         }
-
         private void 환경설정ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SettingForm setForm = new SettingForm();
