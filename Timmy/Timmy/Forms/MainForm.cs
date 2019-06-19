@@ -21,10 +21,10 @@ namespace Timmy
         IList<Site> list = Mapper.Instance().QueryForList<Site>("SelectSite", null);
         public string id, pw;
         SettingForm sf = new SettingForm();
+       
 
-        [DllImport("user32.dll")]
 
-        public static extern int ShowWindow(IntPtr hwnd, int cmdShow);
+        
         public MainForm()
         {
             InitializeComponent();
@@ -32,6 +32,7 @@ namespace Timmy
 
         private void ttsButton_Click(object sender, EventArgs e)
         {
+            
             ss = new SpeechSynthesizer();
             string txt = txtView.Text;
             TTS tts = new TTS();
@@ -81,9 +82,14 @@ namespace Timmy
             {
                 ss.SpeakAsync(txt);
                 if (driver.Url.Contains("naver"))
+                {
                     naversearch(txt.Replace("검색", ""));
+                }
                 else if (driver.Url.Contains("google"))
+                {
                     googleSearch(txt.Replace("검색", ""));
+                   
+                }
             }
             if (txt.Contains("로그인"))
             {
@@ -229,6 +235,8 @@ namespace Timmy
         //구글 검색
         public void googleSearch(string searchword)
         {
+            
+
             try
             {
                 IWebElement q = driver.FindElement(By.Name("q"));
@@ -237,11 +245,12 @@ namespace Timmy
                 q.Submit();
                 var wt = driver.FindElement(By.XPath("//*[@id='rhs_block']/div/div[1]/div/div[1]/div[2]/div[2]/div/div[1]/div/div"));
                 resultbox.Text = wt.Text;
-                ss.SpeakAsync(resultbox.Text);
+                
+                ss.SpeakAsync(wt.Text);
+               
             }
             catch (Exception e)
             {
-                driver.Url=("https://www.google.com");
             }
 
             if (searchword.Contains("날씨"))
@@ -253,9 +262,12 @@ namespace Timmy
 
                 var wt = driver.FindElement(By.CssSelector(".vk_gy.vk_h"));
                 resultbox.Text = wt.Text;
+                
                 ss.SpeakAsync(resultbox.Text);
             }
+            
         }
+        
 
         // 네이버 검색
         public void naversearch(string searchword)
@@ -345,6 +357,11 @@ namespace Timmy
         }
 
         private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void resultbox_TextChanged(object sender, EventArgs e)
         {
 
         }

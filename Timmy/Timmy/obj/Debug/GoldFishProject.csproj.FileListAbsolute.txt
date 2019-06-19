@@ -1,0 +1,9 @@
+C:\Users\wjdtl\Downloads\GoldFish\GoldFishProject\bin\Debug\RotateTransformDemo.exe
+C:\Users\wjdtl\Downloads\GoldFish\GoldFishProject\bin\Debug\RotateTransformDemo.pdb
+C:\Users\wjdtl\Downloads\GoldFish\GoldFishProject\obj\Debug\GoldFishProject.csprojAssemblyReference.cache
+C:\Users\wjdtl\Downloads\GoldFish\GoldFishProject\obj\Debug\RotateTransformDemo.FishForm.resources
+C:\Users\wjdtl\Downloads\GoldFish\GoldFishProject\obj\Debug\RotateTransformDemo.Properties.Resources.resources
+C:\Users\wjdtl\Downloads\GoldFish\GoldFishProject\obj\Debug\GoldFishProject.csproj.GenerateResource.cache
+C:\Users\wjdtl\Downloads\GoldFish\GoldFishProject\obj\Debug\GoldFishProject.csproj.CoreCompileInputs.cache
+C:\Users\wjdtl\Downloads\GoldFish\GoldFishProject\obj\Debug\RotateTransformDemo.exe
+C:\Users\wjdtl\Downloads\GoldFish\GoldFishProject\obj\Debug\RotateTransformDemo.pdb

@@ -37,29 +37,31 @@
             this.메뉴ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSite = new System.Windows.Forms.ToolStripMenuItem();
+            this.환경설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.도움말ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.환경설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // resultbox
             // 
             this.resultbox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.resultbox.Location = new System.Drawing.Point(378, 59);
+            this.resultbox.Location = new System.Drawing.Point(432, 74);
+            this.resultbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.resultbox.Multiline = true;
             this.resultbox.Name = "resultbox";
             this.resultbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.resultbox.Size = new System.Drawing.Size(301, 165);
+            this.resultbox.Size = new System.Drawing.Size(343, 205);
             this.resultbox.TabIndex = 9;
+            this.resultbox.TextChanged += new System.EventHandler(this.resultbox_TextChanged);
             // 
             // ttsButton
             // 
-            this.ttsButton.Location = new System.Drawing.Point(206, 59);
+            this.ttsButton.Location = new System.Drawing.Point(235, 74);
             this.ttsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ttsButton.Name = "ttsButton";
-            this.ttsButton.Size = new System.Drawing.Size(135, 52);
+            this.ttsButton.Size = new System.Drawing.Size(154, 65);
             this.ttsButton.TabIndex = 8;
             this.ttsButton.Text = "tts";
             this.ttsButton.UseVisualStyleBackColor = true;
@@ -67,19 +69,19 @@
             // 
             // txtView
             // 
-            this.txtView.Location = new System.Drawing.Point(19, 134);
+            this.txtView.Location = new System.Drawing.Point(22, 168);
             this.txtView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtView.Multiline = true;
             this.txtView.Name = "txtView";
-            this.txtView.Size = new System.Drawing.Size(335, 154);
+            this.txtView.Size = new System.Drawing.Size(382, 192);
             this.txtView.TabIndex = 7;
             // 
             // btnSpeechStart
             // 
-            this.btnSpeechStart.Location = new System.Drawing.Point(53, 59);
+            this.btnSpeechStart.Location = new System.Drawing.Point(61, 74);
             this.btnSpeechStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSpeechStart.Name = "btnSpeechStart";
-            this.btnSpeechStart.Size = new System.Drawing.Size(125, 52);
+            this.btnSpeechStart.Size = new System.Drawing.Size(143, 65);
             this.btnSpeechStart.TabIndex = 6;
             this.btnSpeechStart.Text = "음성 인식 시작";
             this.btnSpeechStart.UseVisualStyleBackColor = true;
@@ -95,7 +97,7 @@
             this.도움말ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(707, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(808, 28);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -106,22 +108,29 @@
             this.tsmSite,
             this.환경설정ToolStripMenuItem});
             this.메뉴ToolStripMenuItem.Name = "메뉴ToolStripMenuItem";
-            this.메뉴ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.메뉴ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
             this.메뉴ToolStripMenuItem.Text = "메뉴";
             // 
             // tsmLogin
             // 
             this.tsmLogin.Name = "tsmLogin";
-            this.tsmLogin.Size = new System.Drawing.Size(180, 22);
+            this.tsmLogin.Size = new System.Drawing.Size(194, 26);
             this.tsmLogin.Text = "로그인관리";
             this.tsmLogin.Click += new System.EventHandler(this.tsmLogin_Click);
             // 
             // tsmSite
             // 
             this.tsmSite.Name = "tsmSite";
-            this.tsmSite.Size = new System.Drawing.Size(180, 22);
+            this.tsmSite.Size = new System.Drawing.Size(194, 26);
             this.tsmSite.Text = "인터넷주소 목록";
             this.tsmSite.Click += new System.EventHandler(this.tsmSite_Click);
+            // 
+            // 환경설정ToolStripMenuItem
+            // 
+            this.환경설정ToolStripMenuItem.Name = "환경설정ToolStripMenuItem";
+            this.환경설정ToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.환경설정ToolStripMenuItem.Text = "환경설정";
+            this.환경설정ToolStripMenuItem.Click += new System.EventHandler(this.환경설정ToolStripMenuItem_Click);
             // 
             // 도움말ToolStripMenuItem
             // 
@@ -129,35 +138,28 @@
             this.tsmHelp,
             this.tsmInfo});
             this.도움말ToolStripMenuItem.Name = "도움말ToolStripMenuItem";
-            this.도움말ToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.도움말ToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
             this.도움말ToolStripMenuItem.Text = "도움말";
             // 
             // tsmHelp
             // 
             this.tsmHelp.Name = "tsmHelp";
-            this.tsmHelp.Size = new System.Drawing.Size(146, 22);
+            this.tsmHelp.Size = new System.Drawing.Size(174, 26);
             this.tsmHelp.Text = "help";
             this.tsmHelp.Click += new System.EventHandler(this.tsmHelp_Click);
             // 
             // tsmInfo
             // 
             this.tsmInfo.Name = "tsmInfo";
-            this.tsmInfo.Size = new System.Drawing.Size(146, 22);
+            this.tsmInfo.Size = new System.Drawing.Size(174, 26);
             this.tsmInfo.Text = "프로그램정보";
             this.tsmInfo.Click += new System.EventHandler(this.tsmInfo_Click);
             // 
-            // 환경설정ToolStripMenuItem
-            // 
-            this.환경설정ToolStripMenuItem.Name = "환경설정ToolStripMenuItem";
-            this.환경설정ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.환경설정ToolStripMenuItem.Text = "환경설정";
-            this.환경설정ToolStripMenuItem.Click += new System.EventHandler(this.환경설정ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 327);
+            this.ClientSize = new System.Drawing.Size(808, 409);
             this.Controls.Add(this.resultbox);
             this.Controls.Add(this.ttsButton);
             this.Controls.Add(this.txtView);

@@ -63,6 +63,7 @@
             this.Controls.Add(this.label1);
             this.Name = "StartForm";
             this.Text = "시작";
+            this.Load += new System.EventHandler(this.StartForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
