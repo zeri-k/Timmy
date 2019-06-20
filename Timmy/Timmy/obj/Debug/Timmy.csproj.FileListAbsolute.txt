@@ -332,3 +332,4 @@ C:\Users\wjdtl\OneDrive\바탕 화면\Cap\Timmy\Timmy\obj\Debug\Timmy.Forms.Anim
 >>>>>>> 50e5a75e30fd3699853ea2912184d713e1c2c855
 D:\Git_project\Capstone\Timmy\Timmy\obj\Debug\Timmy.SettingForm.resources
 >>>>>>> ba9493cdeb8f5745a474350a62dab5c57f37722d
+D:\Git_project\Capstone\Timmy\Timmy\obj\Debug\Timmy.Forms.Animation.resources

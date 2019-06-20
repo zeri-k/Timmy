@@ -521,20 +521,15 @@ namespace Timmy
             }
         }
 
-        private void tsmExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-        
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
+            this.Hide();
         }
-        private void 환경설정ToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void tsmExit_Click(object sender, EventArgs e)
         {
-            SettingForm setForm = new SettingForm();
-            setForm.Show();
-            this.Visible = false;
+            System.Environment.Exit(0);
         }
     }
 }

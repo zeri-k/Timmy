@@ -40,7 +40,7 @@ namespace Timmy.Forms
 
         private void tsmExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            System.Environment.Exit(0);
         }
 
         private void tsmLogin_Click(object sender, EventArgs e)

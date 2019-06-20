@@ -55,6 +55,7 @@
             this.resultbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.resultbox.Size = new System.Drawing.Size(508, 330);
             this.resultbox.TabIndex = 9;
+            // 
             // txtView
             // 
             this.txtView.Location = new System.Drawing.Point(91, 470);
@@ -106,21 +107,21 @@
             // tsmLogin
             // 
             this.tsmLogin.Name = "tsmLogin";
-            this.tsmLogin.Size = new System.Drawing.Size(216, 26);
+            this.tsmLogin.Size = new System.Drawing.Size(208, 26);
             this.tsmLogin.Text = "로그인관리(&L)";
             this.tsmLogin.Click += new System.EventHandler(this.tsmLogin_Click);
             // 
             // tsmSite
             // 
             this.tsmSite.Name = "tsmSite";
-            this.tsmSite.Size = new System.Drawing.Size(216, 26);
+            this.tsmSite.Size = new System.Drawing.Size(208, 26);
             this.tsmSite.Text = "인터넷주소 목록(&I)";
             this.tsmSite.Click += new System.EventHandler(this.tsmSite_Click);
             // 
             // tsmExit
             // 
             this.tsmExit.Name = "tsmExit";
-            this.tsmExit.Size = new System.Drawing.Size(216, 26);
+            this.tsmExit.Size = new System.Drawing.Size(208, 26);
             this.tsmExit.Text = "종료(&E)";
             this.tsmExit.Click += new System.EventHandler(this.tsmExit_Click);
             // 
@@ -136,14 +137,14 @@
             // tsmHelp
             // 
             this.tsmHelp.Name = "tsmHelp";
-            this.tsmHelp.Size = new System.Drawing.Size(216, 26);
+            this.tsmHelp.Size = new System.Drawing.Size(174, 26);
             this.tsmHelp.Text = "도움말(&H)";
             this.tsmHelp.Click += new System.EventHandler(this.tsmHelp_Click);
             // 
             // tsmInfo
             // 
             this.tsmInfo.Name = "tsmInfo";
-            this.tsmInfo.Size = new System.Drawing.Size(216, 26);
+            this.tsmInfo.Size = new System.Drawing.Size(174, 26);
             this.tsmInfo.Text = "프로그램정보";
             this.tsmInfo.Click += new System.EventHandler(this.tsmInfo_Click);
             // 
