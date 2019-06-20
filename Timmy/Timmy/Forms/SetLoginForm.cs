@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timmy.ClassFile;
 
 namespace Timmy.Forms
 {
@@ -84,7 +85,7 @@ namespace Timmy.Forms
         private void btnMenu_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            MainForm main = new MainForm();
+            MainForm main = (MainForm)Singleton.getMainInstance();
             main.StartPosition = FormStartPosition.Manual;
             main.Location = new Point(300, 150);
             main.Show();

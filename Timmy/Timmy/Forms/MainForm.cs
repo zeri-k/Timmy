@@ -29,7 +29,7 @@ namespace Timmy
         // 도 = 시 * 16/15 = 512Hz (= 처음 도의 2배)
         // 2배 = 높은음, 1/2배 = 낮은음
         public string id, pw;
-       
+
         SeleniumDriver sd = SeleniumDriver.Instance;
         
         public MainForm()
@@ -39,7 +39,7 @@ namespace Timmy
 
         private void ttsButton_Click(object sender, EventArgs e)
         {
-            sd.ttsButton();
+            sd.textChange();
         }
 
         private void tsmLogin_Click(object sender, EventArgs e)
@@ -80,7 +80,8 @@ namespace Timmy
         async void ResultText(int time)
         {
             await Task.Delay(time * 1000);
-            sd.setInput(STT.resultText + "\r\n");
+            if(STT.resultText != null)
+                sd.setInput(STT.resultText + "\r\n");
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -88,6 +89,7 @@ namespace Timmy
             e.Cancel = true;
             this.Hide();
         }
+        
 
         private void tsmExit_Click(object sender, EventArgs e)
         {

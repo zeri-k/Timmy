@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timmy.ClassFile;
 
 namespace Timmy.Forms
 {
     public partial class Animation : Form
     {
-        MainForm main = new MainForm();
+        MainForm main = (MainForm)Singleton.getMainInstance();
         Graphics drawString;
         private string text;
         
@@ -27,7 +28,7 @@ namespace Timmy.Forms
         {
             
             picturSeBox1.Location = new Point(picturSeBox1.Location.X + 3, 143);
-           drawString.DrawString(main.resultbox.Text, Font, Brushes.SkyBlue, new Point(43, 97));
+            drawString.DrawString(main.resultbox.Text, Font, Brushes.SkyBlue, new Point(43, 97));
             pictureBox2.Location = new Point(pictureBox2.Location.X + 3, 71);
             
             if (picturSeBox1.Location.X > this.Size.Width)
@@ -35,7 +36,6 @@ namespace Timmy.Forms
             {
                 picturSeBox1.Location = new Point(1, picturSeBox1.Location.Y);
                 pictureBox2.Location = new Point(1, pictureBox2.Location.Y);
-                anitext();
             }
            
         }
@@ -43,15 +43,10 @@ namespace Timmy.Forms
         public void anitext(string text)
         {
             this.text = text;
-            Console.WriteLine(text);
-            MessageBox.Show(text);
+            Console.WriteLine(text + "\t애니메이션");
             
             drawString.DrawString(text, Font, Brushes.SkyBlue, new Point(43, 97));
-        }
-
-        private void anitext()
-        {
-            drawString.DrawString(text, Font, Brushes.SkyBlue, new Point(43, 97));
+            tbxResult.Text = text;
         }
 
         private void Animation_Load(object sender, EventArgs e)
@@ -77,6 +72,9 @@ namespace Timmy.Forms
             
             drawString.DrawString(textBox1.Text, Font, Brushes.SkyBlue, new Point(43, 97)); 
         }*/
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

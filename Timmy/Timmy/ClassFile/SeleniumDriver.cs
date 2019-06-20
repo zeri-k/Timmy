@@ -10,12 +10,16 @@ using System.Speech.Synthesis;
 using IBatisNet.DataMapper;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Timmy.Forms;
 
 namespace Timmy.ClassFile
 {
     public class SeleniumDriver
     {
         private static SeleniumDriver selenium;
+        MainForm main;
+        Animation ani;
+        public delegate void dgtSetBox(string result);
         private SeleniumDriver()
         {
             Thread t1 = new Thread(new ThreadStart(Run));
@@ -144,6 +148,10 @@ namespace Timmy.ClassFile
 
         public void internet(string url)
         {
+            if(main == null)
+                main = (MainForm)Singleton.getMainInstance();
+            if (ani == null)
+                ani = (Animation)Singleton.getAnimationInstance();
             Console.WriteLine("new ChromeDriver");
             ser.HideCommandPromptWindow = true;
             try
@@ -181,40 +189,58 @@ namespace Timmy.ClassFile
         {
             try
             {
-                wait();
                 IWebElement q = driver.FindElement(By.Name("q"));
                 q.Clear();
                 q.SendKeys(searchword);
                 q.Submit();
-                var wt = driver.FindElement(By.XPath("//*[@id='rhs_block']/div/div[1]/div/div[1]/div[2]/div[2]/div/div[1]/div/div"));
-                result = wt.Text;
-                ss.SpeakAsync(result);
+
+                findName("//*[@id='rhs_block']/div/div[1]/div/div[1]/div[2]/div[2]/div/div[1]/div/div");
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
-                MessageBox.Show(e.ToString());
-                Console.WriteLine("구글 검색 오류");
+                findName("//*[@id='rhs_block']/div/div[1]/div/div[1]/div[2]/div[2]/div/div[1]/div/div");
             }
 
             if (searchword.Contains("날씨"))
             {
-                IWebElement q = driver.FindElement(By.Name("q"));
-                q.Clear();
-                q.SendKeys(searchword);
-                q.Submit();
+                try
+                {
+                    IWebElement q = driver.FindElement(By.Name("q"));
+                    q.Clear();
+                    q.SendKeys(searchword);
+                    q.Submit();
 
-                var wt = driver.FindElement(By.CssSelector(".vk_gy.vk_h"));
-                result = wt.Text;
-                ss.SpeakAsync(result);
+                    findCss(".vk_gy.vk_h");
+                }
+                catch(Exception e) {
+                    findCss(".vk_gy.vk_h");
+                }
+                
             }
+
+            if (main.resultbox.InvokeRequired)
+            {
+                dgtSetBox dgt = new dgtSetBox(googleSearch);
+                main.Invoke(dgt, new object[] { searchword });
+            }
+            else
+            {
+                main.resultbox.Text = result;
+            }
+            ani.anitext(result);
             input = "";
         }
-        private void wait()
+        private void findName(string path)
         {
-            var wait = new OpenQA.Selenium.Support.UI.WebDriverWait(driver, TimeSpan.FromSeconds(30));
-
-            wait.Until(driver1 => ((IJavaScriptExecutor)driver).ExecuteScript("return document.readyState").Equals("complete"));
+            var wt = driver.FindElement(By.XPath(path));
+            result = wt.Text;
+            ss.SpeakAsync(result);
+        }
+        private void findCss(string path)
+        {
+            var wt = driver.FindElement(By.CssSelector(path));
+            result = wt.Text;
+            ss.SpeakAsync(result);
         }
         // 네이버 검색
         public void naversearch(string searchword)
@@ -268,9 +294,15 @@ namespace Timmy.ClassFile
             }
             input = "";
         }
-
-        public void ttsButton()
+        
+        public void textChange()
         {
+            if (input != "")
+            {
+                Beep(1280, 50);
+                Beep(1024, 50);
+            }
+
             ss = new SpeechSynthesizer();
             string txt = input;
             TTS tts = new TTS();
@@ -316,7 +348,7 @@ namespace Timmy.ClassFile
                     }
                 }
             }
-            if (txt.Contains("검색"))
+            else if (txt.Contains("검색"))
             {
                 ss.SpeakAsync(txt);
                 if (driver.Url.Contains("naver"))
@@ -324,7 +356,7 @@ namespace Timmy.ClassFile
                 else if (driver.Url.Contains("google"))
                     googleSearch(txt.Replace("검색", ""));
             }
-            if (txt.Contains("로그인"))
+            else if (txt.Contains("로그인"))
             {
                 ss.SpeakAsync(txt);
                 if (txt.Contains("구글"))
@@ -334,7 +366,7 @@ namespace Timmy.ClassFile
                     MessageBox.Show("환경설정 확인");
                 }
             }
-            if (txt.Contains("메일확인"))
+            else if (txt.Contains("메일확인"))
             {
                 if (txt.Contains("구글"))
                 {
@@ -345,68 +377,17 @@ namespace Timmy.ClassFile
                     MessageBox.Show("나머지는개발중 ^^7");
                 }
             }
-            if (txt.Contains("새로고침"))
+            else if (txt.Equals("새로고침"))
             {
                 driver.Navigate().Refresh();
             }
-            if (txt.Contains("앞으로"))
+            else if (txt.Equals("앞으로"))
             {
                 driver.Navigate().Forward();
             }
-            if (txt.Contains("뒤로"))
+            else if (txt.Equals("뒤로"))
             {
                 driver.Navigate().Back();
-            }
-        }
-        public void textChange()
-        {
-            if (input != "")
-            {
-                Beep(1280, 50);
-                Beep(1024, 50);
-            }
-
-            ss = new SpeechSynthesizer();
-            string txt = input;
-            TTS tts = new TTS();
-            tts.tts(txt);
-
-            if (txt.Contains("켜"))
-            {
-                //새 탭으로 여는거 추가요망
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (txt.Contains(list[i].siteName))
-                    {
-                        ss.SpeakAsync(list[i].siteName + "실행");
-                        internet(list[i].url);
-                        //이거 바꾸면 됨
-                    }
-                }
-            }
-            else if (txt.Contains("꺼"))
-            {
-                ss.SpeakAsync("인터넷 종료");
-                driver.Quit();
-            }
-            else if (txt.Contains("이동"))
-            {
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (txt.Contains(list[i].siteName))
-                    {
-                        ss.SpeakAsync("인터넷 이동");
-                        internet(list[i].url);
-                    }
-                }
-            }
-            else if (txt.Contains("검색"))
-            {
-                ss.SpeakAsync(txt);
-                if (driver.Url.Contains("naver"))
-                    naversearch(txt.Replace("검색", ""));
-                else if (driver.Url.Contains("google"))
-                    googleSearch(txt.Replace("검색", ""));
             }
             else if (txt.Contains("현재 페이지 등록"))
             {

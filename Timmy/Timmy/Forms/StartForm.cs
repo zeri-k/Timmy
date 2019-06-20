@@ -7,14 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timmy.ClassFile;
 
 namespace Timmy.Forms
 {
     public partial class StartForm : Form
     {
-        MainForm main;
-        SetLoginForm settingForm;
-        SetSiteForm listForm;
+        MainForm main = (MainForm)Singleton.getMainInstance();
+        SetLoginForm settingForm = (SetLoginForm)Singleton.getSettingFormInstance();
+        SetSiteForm listForm = (SetSiteForm)Singleton.getListFormInstance();
+        Animation ani = (Animation)Singleton.getAnimationInstance();
 
         public StartForm()
         {
@@ -24,8 +26,6 @@ namespace Timmy.Forms
         private void btnStart_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            if(main == null)
-                main = new MainForm();
             main.StartPosition = FormStartPosition.Manual;
             main.Location = new Point(300, 150);
 
@@ -33,7 +33,6 @@ namespace Timmy.Forms
         }
         private void StartForm_Load(object sender, EventArgs e)
         {
-            Animation ani = new Animation();
             ani.Show();
         }
         
@@ -45,29 +44,21 @@ namespace Timmy.Forms
 
         private void tsmLogin_Click(object sender, EventArgs e)
         {
-            if (settingForm == null)
-                settingForm = new SetLoginForm();
             settingForm.Show();
         }
 
         private void tsmSite_Click(object sender, EventArgs e)
         {
-            if (listForm == null)
-                listForm = new SetSiteForm();
             listForm.Show();
         }
 
         private void tsmOpen_Click(object sender, EventArgs e)
         {
-            if (main == null)
-                main = new MainForm();
             main.Show();
         }
 
         private void ntfIcon_DoubleClick(object sender, EventArgs e)
         {
-            if (main == null)
-                main = new MainForm();
             main.Show();
         }
 
