@@ -32,7 +32,6 @@ namespace Timmy
         // 도 = 시 * 16/15 = 512Hz (= 처음 도의 2배)
         // 2배 = 높은음, 1/2배 = 낮은음
         public string id, pw;
-        SettingForm sf = new SettingForm();
        
 
 
