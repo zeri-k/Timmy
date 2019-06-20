@@ -14,6 +14,7 @@ namespace Timmy.Forms
     {
         MainForm main = new MainForm();
         Graphics drawString;
+        private string text;
         
         public Animation()
         {
@@ -34,22 +35,25 @@ namespace Timmy.Forms
             {
                 picturSeBox1.Location = new Point(1, picturSeBox1.Location.Y);
                 pictureBox2.Location = new Point(1, pictureBox2.Location.Y);
-               
+                anitext();
             }
            
         }
       
         public void anitext(string text)
         {
-            
-            
+            this.text = text;
             Console.WriteLine(text);
             MessageBox.Show(text);
             
             drawString.DrawString(text, Font, Brushes.SkyBlue, new Point(43, 97));
-
         }
-        
+
+        private void anitext()
+        {
+            drawString.DrawString(text, Font, Brushes.SkyBlue, new Point(43, 97));
+        }
+
         private void Animation_Load(object sender, EventArgs e)
         {
             

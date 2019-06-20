@@ -152,6 +152,7 @@
   <ItemGroup>
     <Compile Include="ClassFile\DAO.cs" />
     <Compile Include="ClassFile\Login.cs" />
+    <Compile Include="ClassFile\SeleniumDriver.cs" />
     <Compile Include="ClassFile\Site.cs" />
     <Compile Include="ClassFile\STT.cs" />
     <Compile Include="ClassFile\TTS.cs" />

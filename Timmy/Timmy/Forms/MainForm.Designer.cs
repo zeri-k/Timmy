@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.resultbox = new System.Windows.Forms.TextBox();
-            this.txtView = new System.Windows.Forms.TextBox();
             this.btnSpeechStart = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -55,18 +54,6 @@
             this.resultbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.resultbox.Size = new System.Drawing.Size(508, 330);
             this.resultbox.TabIndex = 9;
-            // 
-            // txtView
-            // 
-            this.txtView.Location = new System.Drawing.Point(91, 470);
-            this.txtView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtView.Multiline = true;
-            this.txtView.Name = "txtView";
-            this.txtView.ReadOnly = true;
-            this.txtView.Size = new System.Drawing.Size(66, 28);
-            this.txtView.TabIndex = 7;
-            this.txtView.Visible = false;
-            this.txtView.TextChanged += new System.EventHandler(this.txtView_TextChanged);
             // 
             // btnSpeechStart
             // 
@@ -154,7 +141,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(808, 409);
             this.Controls.Add(this.resultbox);
-            this.Controls.Add(this.txtView);
             this.Controls.Add(this.btnSpeechStart);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -172,7 +158,6 @@
         #endregion
 
         public System.Windows.Forms.TextBox resultbox;
-        public System.Windows.Forms.TextBox txtView;
         private System.Windows.Forms.Button btnSpeechStart;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.MenuStrip menuStrip1;
