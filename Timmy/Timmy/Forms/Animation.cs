@@ -16,7 +16,8 @@ namespace Timmy.Forms
         MainForm main = (MainForm)Singleton.getMainInstance();
         Graphics drawString;
         private string text;
-        
+        public delegate void dgtSetBox(string result);
+
         public Animation()
         {
             InitializeComponent();
@@ -44,9 +45,16 @@ namespace Timmy.Forms
         {
             this.text = text;
             Console.WriteLine(text + "\t애니메이션");
-            
-            drawString.DrawString(text, Font, Brushes.SkyBlue, new Point(43, 97));
-            tbxResult.Text = text;
+
+            if (main.resultbox.InvokeRequired)
+            {
+                dgtSetBox dgt = new dgtSetBox(anitext);
+                main.Invoke(dgt, new object[] { text });
+            }
+            else
+            {
+                tbxResult.Text = text;
+            }
         }
 
         private void Animation_Load(object sender, EventArgs e)

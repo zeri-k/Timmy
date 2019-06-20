@@ -158,9 +158,6 @@ namespace Timmy.ClassFile
             {
                 Process[] pro = Process.GetProcessesByName("chrome");
 
-                if (driver != null)
-                    driver.Quit();
-
                 if (driver == null)
                 {
                     driver = new ChromeDriver(ser, new ChromeOptions());
@@ -427,6 +424,7 @@ namespace Timmy.ClassFile
                     input = "";
                 }
             }
+            input = "";
         }
         private void stt()
         {

@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassFile\DAO.cs" />
+    <Compile Include="ClassFile\HotKey.cs" />
     <Compile Include="ClassFile\Login.cs" />
     <Compile Include="ClassFile\SeleniumDriver.cs" />
     <Compile Include="ClassFile\Singleton.cs" />

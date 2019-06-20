@@ -19,7 +19,11 @@
   <statements>
 
     <select id="SelectLogin"  resultMap="LoginResultMap">
-      select site_name ,id ,pw from login;
+      select site_name ,id ,pw from login
+    </select>
+
+    <select id="SelectSiteLogin"  resultMap="LoginResultMap" parameter="String">
+      select id ,pw from login where site_name = #siteName#
     </select>
 
     <insert id="setLoginIns" parameterClass="Login">
