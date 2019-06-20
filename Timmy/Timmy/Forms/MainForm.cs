@@ -235,8 +235,7 @@ namespace Timmy
         //구글 검색
         public void googleSearch(string searchword)
         {
-            
-
+            Animation ani = new Animation();
             try
             {
                 IWebElement q = driver.FindElement(By.Name("q"));
@@ -245,12 +244,13 @@ namespace Timmy
                 q.Submit();
                 var wt = driver.FindElement(By.XPath("//*[@id='rhs_block']/div/div[1]/div/div[1]/div[2]/div[2]/div/div[1]/div/div"));
                 resultbox.Text = wt.Text;
-                
+                ani.anitext(resultbox.Text);
                 ss.SpeakAsync(wt.Text);
                
             }
             catch (Exception e)
             {
+
             }
 
             if (searchword.Contains("날씨"))

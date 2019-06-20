@@ -26,11 +26,12 @@ namespace Timmy.Forms
 
             main.Show();
         }
-
+        
         private void StartForm_Load(object sender, EventArgs e)
         {
             Animation ani = new Animation();
             ani.Show();
         }
+        
     }
 }
