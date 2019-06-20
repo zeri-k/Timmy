@@ -60,7 +60,7 @@ namespace Timmy
         {
             ss = new SpeechSynthesizer();
 
-            if (txt.Contains("켜")) // 실행
+            if (txt.Contains(key + "켜")) // 실행
             {
                 ss.SpeakAsync(key + "실행");
                 Process.Start(filename);

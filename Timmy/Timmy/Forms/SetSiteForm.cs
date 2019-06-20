@@ -98,5 +98,11 @@ namespace Timmy.Forms
             main.Location = new Point(300, 150);
             main.Show();
         }
+
+        private void SetSiteForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visible = false;
+        }
     }
 }

@@ -105,9 +105,10 @@ namespace Timmy.Forms
             }
         }
 
-        private void dgvLogin_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void SetLoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            e.Cancel = true;
+            this.Visible = false;
         }
     }
 }

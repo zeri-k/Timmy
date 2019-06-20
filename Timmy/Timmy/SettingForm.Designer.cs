@@ -28,28 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.id = new System.Windows.Forms.TextBox();
-            this.pw = new System.Windows.Forms.TextBox();
             this.btnMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // id
-            // 
-            this.id.Location = new System.Drawing.Point(133, 73);
-            this.id.Name = "id";
-            this.id.Size = new System.Drawing.Size(100, 21);
-            this.id.TabIndex = 0;
-            this.id.Text = "capstone8797";
-            this.id.TextChanged += new System.EventHandler(this.id_TextChanged);
-            // 
-            // pw
-            // 
-            this.pw.Location = new System.Drawing.Point(133, 115);
-            this.pw.Name = "pw";
-            this.pw.Size = new System.Drawing.Size(100, 21);
-            this.pw.TabIndex = 0;
-            this.pw.Text = "asdf8797!";
-            this.pw.TextChanged += new System.EventHandler(this.pw_TextChanged);
             // 
             // btnMenu
             // 
@@ -68,19 +48,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 239);
             this.Controls.Add(this.btnMenu);
-            this.Controls.Add(this.pw);
-            this.Controls.Add(this.id);
             this.Name = "SettingForm";
             this.Text = "SettingForm";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox id;
-        private System.Windows.Forms.TextBox pw;
         private System.Windows.Forms.Button btnMenu;
     }
 }

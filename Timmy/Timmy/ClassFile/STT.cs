@@ -2,12 +2,16 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Google.Cloud.Speech.V1;
+using System.Runtime.InteropServices;
 
 namespace Timmy
 {
     class STT
     {
         public static string resultText = null;
+        public static bool writeMore;
+        [DllImport("kernel32.dll")]
+        public static extern bool Beep(int n, int m);
 
         public static async Task<object> StreamingMicRecognizeAsync(int seconds)
         {
@@ -48,6 +52,7 @@ namespace Timmy
                         foreach (var alternative in result.Alternatives)
                         {
                             resultText = alternative.Transcript;
+                            
                             Console.WriteLine(resultText);
                         }
                     }
@@ -55,7 +60,7 @@ namespace Timmy
             });
             // 마이크에서 읽고 API로 스트리밍합니다.
             object writeLock = new object();
-            bool writeMore = true;
+            writeMore = true;
             var waveIn = new NAudio.Wave.WaveInEvent();
             waveIn.DeviceNumber = 0;
             waveIn.WaveFormat = new NAudio.Wave.WaveFormat(16000, 1);
@@ -74,6 +79,8 @@ namespace Timmy
                     }
                 };
             waveIn.StartRecording();
+            Beep(512, 50);
+            Beep(640, 50);
             Console.WriteLine("Speak now.");
             await Task.Delay(TimeSpan.FromSeconds(seconds));
             // 녹음을 중지하고 종료하십시오.

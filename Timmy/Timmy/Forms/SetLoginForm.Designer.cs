@@ -31,6 +31,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetLoginForm));
+
             this.tbxId = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tbxPw = new System.Windows.Forms.TextBox();
@@ -178,7 +180,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvLogin.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvLogin.Location = new System.Drawing.Point(3, 20);
+            this.dgvLogin.Location = new System.Drawing.Point(3, 25);
             this.dgvLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvLogin.Name = "dgvLogin";
             this.dgvLogin.ReadOnly = true;
@@ -194,7 +196,6 @@
             this.dgvLogin.Size = new System.Drawing.Size(279, 138);
             this.dgvLogin.TabIndex = 0;
             this.dgvLogin.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLogin_CellClick);
-            this.dgvLogin.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLogin_CellContentClick);
             // 
             // SetLoginForm
             // 
@@ -206,9 +207,11 @@
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.groupBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "SetLoginForm";
-            this.Text = "SetLoginForm";
+            this.Text = "로그인 관리";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SetLoginForm_FormClosing);
             this.Load += new System.EventHandler(this.SetLoginForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

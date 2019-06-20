@@ -79,6 +79,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.textBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InformationForm";
             this.Text = "프로그램 정보";
             this.ResumeLayout(false);
