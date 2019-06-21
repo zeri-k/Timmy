@@ -89,7 +89,16 @@ namespace Timmy
             e.Cancel = true;
             this.Hide();
         }
-        
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void resultbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
 
         private void tsmExit_Click(object sender, EventArgs e)
         {
