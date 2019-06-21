@@ -15,15 +15,34 @@ namespace Timmy.Forms
         {
             InitializeComponent();
         }
+        private static DateTime Delay(int MS)
+
+        {
+
+            DateTime ThisMoment = DateTime.Now;
+            TimeSpan duration = new TimeSpan(0, 0, 0, 0, MS);
+            DateTime AfterWards = ThisMoment.Add(duration);
+            while (AfterWards >= ThisMoment)
+            {
+                System.Windows.Forms.Application.DoEvents();
+                ThisMoment = DateTime.Now;
+            }
+            return DateTime.Now;
+        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+
             if (tbxResult.Text == text)
             {
-                picturSeBox1.Location = new Point(picturSeBox1.Location.X , 660);
-                tbxResult.Location = new Point(tbxResult.Location.X , 540);
-                
+                if (picturSeBox1.Location.X + picturSeBox1.Width > this.Size.Width)
+                {
+                  //  Delay(3000);
+                    picturSeBox1.Location = new Point(picturSeBox1.Location.X, 660);
+                    tbxResult.Location = new Point(tbxResult.Location.X, 540);
+                }
 
+                
             }
             else if(tbxResult.Text=="")
             {
@@ -31,7 +50,7 @@ namespace Timmy.Forms
                 tbxResult.Location = new Point(tbxResult.Location.X + 3, 540);
             }
             
-            if (picturSeBox1.Location.X > this.Size.Width)
+            if (picturSeBox1.Location.X  > this.Size.Width)
 
             {
                 picturSeBox1.Location = new Point(1, picturSeBox1.Location.Y);
@@ -66,6 +85,11 @@ namespace Timmy.Forms
             tbxResult.Text = "";
             main.resultbox.Text = "";
             tbxResult.Visible = false;
+        }
+
+        private void Animation_Load(object sender, EventArgs e)
+        {
+            this.ShowInTaskbar = false;
         }
     }
 }

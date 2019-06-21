@@ -56,11 +56,12 @@
             // tbxResult
             // 
             this.tbxResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxResult.Location = new System.Drawing.Point(12, 48);
+            this.tbxResult.Location = new System.Drawing.Point(43, 48);
             this.tbxResult.Multiline = true;
             this.tbxResult.Name = "tbxResult";
             this.tbxResult.ReadOnly = true;
-            this.tbxResult.Size = new System.Drawing.Size(278, 162);
+            this.tbxResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbxResult.Size = new System.Drawing.Size(207, 162);
             this.tbxResult.TabIndex = 4;
             this.tbxResult.Visible = false;
             this.tbxResult.Click += new System.EventHandler(this.tbxResult_Click);
@@ -79,6 +80,7 @@
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Animation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picturSeBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
