@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Timmy.ClassFile;
+using static Timmy.ClassFile.SeleniumDriver;
 
 namespace Timmy.Forms
 {
@@ -48,14 +49,14 @@ namespace Timmy.Forms
         }
       
         public void anitext(string text)
-        {
-            this.text = text;
-            Console.WriteLine(text + "\t애니메이션");
-            tbxResult.Text = text;
-            if (tbxResult.Text == text)
-            {
-                tbxResult.Visible = true;
-            }
+        {                this.text = text;
+                Console.WriteLine(text + "\t애니메이션");
+                tbxResult.Text = text;
+                if (tbxResult.Text == text)
+                {
+                    tbxResult.Visible = true;
+                }
+            
         }
 
         private void Animation_Load(object sender, EventArgs e)

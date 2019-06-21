@@ -229,62 +229,64 @@ namespace Timmy.ClassFile
         //구글 검색
         public void googleSearch(string searchword)
         {
-            if (searchword.Contains("날씨"))
-            {
-                try
-                {
-                    IWebElement q = driver.FindElement(By.Name("q"));
-                    q.Clear();
-                    q.SendKeys(searchword);
-                    Actions builder = new Actions(driver);
-                    builder.SendKeys(OpenQA.Selenium.Keys.Enter);
-
-                    var wt = driver.FindElement(By.CssSelector(".vk_gy.vk_h"));
-                    var wt2 = driver.FindElement(By.XPath("//*[@id='wob_tm']"));
-                    ss.SpeakAsync(wt.Text + "현재온도" + wt2.Text + "도");
-                    input = "";
-                }
-                catch (Exception e)
-                {
-                    ss.SpeakAsync("결과값이 정확하지 않습니다");
-                }
-                input = "";
-
-            }
-            else {
-                try
-                {
-                    IWebElement q = driver.FindElement(By.Name("q"));
-                    q.Clear();
-                    q.SendKeys(searchword);
-                    Actions builder = new Actions(driver);
-                    builder.SendKeys(OpenQA.Selenium.Keys.Enter);
-                    var wt = driver.FindElement(By.XPath("//*[@id='rhs_block']/div/div[1]/div/div[1]/div[2]/div[2]/div/div[1]/div/div"));
-                    result = wt.Text;
-                    ss.SpeakAsync(result);
-                    input = "";
-                }
-                catch (Exception e)
-                {
-                    ss.SpeakAsync("결과값이 정확하지 않습니다");
-                }
-                input = "";
-            }
-            
             if (main.resultbox.InvokeRequired)
             {
                 dgtSetBox dgt = new dgtSetBox(googleSearch);
                 main.Invoke(dgt, new object[] { searchword });
+                if (searchword.Contains("날씨"))
+                {
+                    try
+                    {
+                        IWebElement q = driver.FindElement(By.Name("q"));
+                        q.Clear();
+                        q.SendKeys(searchword);
+                        Actions builder = new Actions(driver);
+                        builder.SendKeys(OpenQA.Selenium.Keys.Enter);
+
+                        var wt = driver.FindElement(By.CssSelector(".vk_gy.vk_h"));
+                        var wt2 = driver.FindElement(By.XPath("//*[@id='wob_tm']"));
+                        result = wt.Text + "현재온도" + wt2.Text + "도";
+                        ss.SpeakAsync(wt.Text + "현재온도" + wt2.Text + "도");
+                        input = "";
+                    }
+                    catch (Exception e)
+                    {
+                        ss.SpeakAsync("결과값이 정확하지 않습니다");
+                    }
+                    input = "";
+
+                }
+                else
+                {
+                    try
+                    {
+                        IWebElement q = driver.FindElement(By.Name("q"));
+                        q.Clear();
+                        q.SendKeys(searchword);
+                        Actions builder = new Actions(driver);
+                        builder.SendKeys(OpenQA.Selenium.Keys.Enter);
+                        var wt = driver.FindElement(By.XPath("//*[@id='rhs_block']/div/div[1]/div/div[1]/div[2]/div[2]/div/div[1]/div/div"));
+                        result = wt.Text;
+                        ss.SpeakAsync(result);
+                        input = "";
+                    }
+                    catch (Exception e)
+                    {
+                        ss.SpeakAsync("결과값이 정확하지 않습니다");
+                    }
+                    input = "";
+                }
+
             }
             else
             {
                 main.resultbox.Text = result;
             }
-            ani.anitext(result);
-            
-            input = "";
+                ani.anitext(result);
 
-        }
+                input = "";
+            }
+        
 
 
 
