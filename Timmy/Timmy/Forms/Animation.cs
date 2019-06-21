@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Timmy.ClassFile;
-using static Timmy.ClassFile.SeleniumDriver;
 
 namespace Timmy.Forms
 {
@@ -18,11 +9,11 @@ namespace Timmy.Forms
     {
         MainForm main = (MainForm)Singleton.getMainInstance();
         private string text;
-        
+        public delegate void dgtSetBox(string result);
+
         public Animation()
         {
             InitializeComponent();
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -50,39 +41,28 @@ namespace Timmy.Forms
         }
       
         public void anitext(string text)
-        {                this.text = text;
+        {
+            if (this.tbxResult.InvokeRequired)
+            {
+                dgtSetBox dgt = new dgtSetBox(anitext);
+                this.Invoke(dgt, new object[] { text });
+
+                this.text = text;
                 Console.WriteLine(text + "\t애니메이션");
                 tbxResult.Text = text;
-                if (tbxResult.Text == text)
+            }
+            else
+            {
+                tbxResult.Text = text;
+                if (tbxResult.Text.Equals(text))
                 {
                     tbxResult.Visible = true;
                 }
-            
-        }
-       
-        private void Animation_Load(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-       
-        
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbxResult_TextChanged(object sender, EventArgs e)
-        {
+            }
         }
 
         private void tbxResult_Click(object sender, EventArgs e)
         {
-
             tbxResult.Text = "";
             main.resultbox.Text = "";
             tbxResult.Visible = false;

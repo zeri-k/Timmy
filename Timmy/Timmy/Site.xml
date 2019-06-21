@@ -18,7 +18,7 @@
   <statements>
     
     <select id="SelectSite"  resultMap="SiteResultMap">
-      select site_name, site_link from site;
+      select site_name, site_link from site
     </select>
 
     <insert id="setSiteIns" parameterClass="Site">

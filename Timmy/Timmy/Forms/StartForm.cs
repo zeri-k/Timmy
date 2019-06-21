@@ -33,12 +33,14 @@ namespace Timmy.Forms
         }
         private void StartForm_Load(object sender, EventArgs e)
         {
+            HotKey.HookStart();
             ani.Show();
         }
         
 
         private void tsmExit_Click(object sender, EventArgs e)
         {
+            HotKey.HookEnd();
             System.Environment.Exit(0);
         }
 
@@ -61,10 +63,6 @@ namespace Timmy.Forms
         {
             main.Show();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

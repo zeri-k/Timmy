@@ -64,7 +64,6 @@
             this.tbxResult.TabIndex = 4;
             this.tbxResult.Visible = false;
             this.tbxResult.Click += new System.EventHandler(this.tbxResult_Click);
-            this.tbxResult.TextChanged += new System.EventHandler(this.tbxResult_TextChanged);
             // 
             // Animation
             // 
@@ -80,7 +79,6 @@
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Animation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picturSeBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

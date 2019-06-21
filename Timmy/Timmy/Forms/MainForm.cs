@@ -77,6 +77,14 @@ namespace Timmy
             ResultText(5);
         }
 
+        public void speechStart()
+        {
+            ss = new SpeechSynthesizer();
+
+            STT.StreamingMicRecognizeAsync(5);
+            ResultText(5);
+        }
+
         async void ResultText(int time)
         {
             await Task.Delay(time * 1000);
@@ -102,6 +110,7 @@ namespace Timmy
 
         private void tsmExit_Click(object sender, EventArgs e)
         {
+            HotKey.HookEnd();
             System.Environment.Exit(0);
         }
     }

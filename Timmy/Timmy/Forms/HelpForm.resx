@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>1. alt + t를 누르면 음성인식이 실행 됩니다.
+    <value>1. 폼이 열려 있을때 alt + t를 누르면 음성인식이 실행 됩니다.
 
 2. '등록되어 있는 페이지 이름' + '켜 줘'라고 말씀해 보세요.
 
@@ -128,7 +128,9 @@
 4. '검색하고 싶은내용' + '검색'이라고 말씀해 보세요.
 
 5. 현재 페이지 등록이라고 말씀해 보세요.
-   앞으로 바로 이동할 수 있습니다.</value>
+   앞으로 바로 이동할 수 있습니다.
+
+6. 언제든 F3을 누르면 음성인식이 실행 됩니다.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
