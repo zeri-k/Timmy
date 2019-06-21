@@ -54,6 +54,7 @@
             this.resultbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.resultbox.Size = new System.Drawing.Size(508, 330);
             this.resultbox.TabIndex = 9;
+            this.resultbox.TextChanged += new System.EventHandler(this.resultbox_TextChanged);
             // 
             // btnSpeechStart
             // 
@@ -148,6 +149,7 @@
             this.Name = "MainForm";
             this.Text = "Timmy";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
