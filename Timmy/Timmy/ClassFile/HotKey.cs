@@ -14,7 +14,7 @@ namespace Timmy.ClassFile
         [DllImport("user32.dll")]
         private static extern bool UnhookWindowsHookEx(IntPtr hhk);
         [DllImport("kernel32.dll")]
-        private static extern IntPtr GetModuleHandle(string lpModuleName);
+        private static extern IntPtr GetModuleHandleA(string lpModuleName);
         
         private const int WH_KEYBOARD_LL = 13;
         private const int WM_KEYDOWN = 0x0100;
@@ -47,7 +47,7 @@ namespace Timmy.ClassFile
             using (Process curProcess = Process.GetCurrentProcess())
             using (ProcessModule curModule = curProcess.MainModule)
             {
-                _hookID = SetWindowsHookExA(WH_KEYBOARD_LL, _proc, GetModuleHandle(curModule.ModuleName), 0);
+                _hookID = SetWindowsHookExA(WH_KEYBOARD_LL, _proc, GetModuleHandleA(curModule.ModuleName), 0);
             }
         }
         //훅 종료
