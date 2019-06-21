@@ -15,43 +15,31 @@ namespace Timmy.Forms
         {
             InitializeComponent();
         }
-        private static DateTime Delay(int MS)
-
-        {
-
-            DateTime ThisMoment = DateTime.Now;
-            TimeSpan duration = new TimeSpan(0, 0, 0, 0, MS);
-            DateTime AfterWards = ThisMoment.Add(duration);
-            while (AfterWards >= ThisMoment)
-            {
-                System.Windows.Forms.Application.DoEvents();
-                ThisMoment = DateTime.Now;
-            }
-            return DateTime.Now;
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
-            if (tbxResult.Text == text)
-            {
+            if (tbxResult.Text.Equals(text))
+            {   // 멈춤
                 if (picturSeBox1.Location.X + picturSeBox1.Width > this.Size.Width)
                 {
-                  //  Delay(3000);
-                    picturSeBox1.Location = new Point(picturSeBox1.Location.X, 660);
-                    tbxResult.Location = new Point(tbxResult.Location.X, 540);
+                    picturSeBox1.Location = new Point(10, picturSeBox1.Location.Y);
+                    tbxResult.Location = new Point(10, tbxResult.Location.Y);
                 }
-
-                
+                if (picturSeBox1.Location.X < this.Size.Width)
+                {
+                    picturSeBox1.Location = new Point(picturSeBox1.Location.X, this.Size.Height - 120);
+                    tbxResult.Location = new Point(tbxResult.Location.X, this.Size.Height - 240);
+                }
             }
-            else if(tbxResult.Text=="")
+            // 이동
+            else if(tbxResult.Text.Equals(""))
             {
-                picturSeBox1.Location = new Point(picturSeBox1.Location.X + 3, 660);
-                tbxResult.Location = new Point(tbxResult.Location.X + 3, 540);
+                picturSeBox1.Location = new Point(picturSeBox1.Location.X + 3, this.Size.Height - 120);
+                tbxResult.Location = new Point(tbxResult.Location.X + 3, this.Size.Height - 240);
             }
             
+            // 초기 좌표로 이동
             if (picturSeBox1.Location.X  > this.Size.Width)
-
             {
                 picturSeBox1.Location = new Point(1, picturSeBox1.Location.Y);
                 tbxResult.Location = new Point(1, tbxResult.Location.Y);
