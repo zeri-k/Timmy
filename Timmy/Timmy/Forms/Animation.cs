@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -28,15 +29,15 @@ namespace Timmy.Forms
         {
             if (tbxResult.Text == text)
             {
-                picturSeBox1.Location = new Point(picturSeBox1.Location.X , 143);
-                tbxResult.Location = new Point(tbxResult.Location.X , 31);
+                picturSeBox1.Location = new Point(picturSeBox1.Location.X , 660);
+                tbxResult.Location = new Point(tbxResult.Location.X , 540);
                 
 
             }
             else if(tbxResult.Text=="")
             {
-                picturSeBox1.Location = new Point(picturSeBox1.Location.X + 3, 143);
-                tbxResult.Location = new Point(tbxResult.Location.X + 3, 31);
+                picturSeBox1.Location = new Point(picturSeBox1.Location.X + 3, 660);
+                tbxResult.Location = new Point(tbxResult.Location.X + 3, 540);
             }
             
             if (picturSeBox1.Location.X > this.Size.Width)
@@ -58,7 +59,7 @@ namespace Timmy.Forms
                 }
             
         }
-
+       
         private void Animation_Load(object sender, EventArgs e)
         {
            

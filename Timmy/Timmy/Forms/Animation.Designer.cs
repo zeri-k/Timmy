@@ -55,6 +55,7 @@
             // 
             // tbxResult
             // 
+            this.tbxResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxResult.Location = new System.Drawing.Point(12, 48);
             this.tbxResult.Multiline = true;
             this.tbxResult.Name = "tbxResult";

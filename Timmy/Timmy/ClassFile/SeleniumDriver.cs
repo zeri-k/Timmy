@@ -229,11 +229,7 @@ namespace Timmy.ClassFile
         //구글 검색
         public void googleSearch(string searchword)
         {
-            if (main.resultbox.InvokeRequired)
-            {
-                dgtSetBox dgt = new dgtSetBox(googleSearch);
-                main.Invoke(dgt, new object[] { searchword });
-                if (searchword.Contains("날씨"))
+            if (searchword.Contains("날씨"))
                 {
                     try
                     {
@@ -276,8 +272,13 @@ namespace Timmy.ClassFile
                     }
                     input = "";
                 }
+            if (main.resultbox.InvokeRequired)
+            {
+                dgtSetBox dgt = new dgtSetBox(googleSearch);
+                main.Invoke(dgt, new object[] { searchword });
 
             }
+
             else
             {
                 main.resultbox.Text = result;
