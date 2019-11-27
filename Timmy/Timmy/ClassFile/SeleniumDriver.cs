@@ -246,26 +246,25 @@ namespace Timmy.ClassFile
         {
             if (main.resultbox.InvokeRequired)
             {
-                
+                IWebElement q = driver.FindElementByName("q");
+                q.Clear();
                 if (searchword.Contains("날씨"))
                 {
                     try
                     {
-                        IWebElement q = driver.FindElement(By.Name("q"));
-                        q.Clear();
                         q.SendKeys(searchword);
                         Actions builder = new Actions(driver);
                         builder.SendKeys(OpenQA.Selenium.Keys.Enter);
 
                         var wt = driver.FindElement(By.CssSelector(".vk_gy.vk_h"));
                         var wt2 = driver.FindElement(By.XPath("//*[@id='wob_tm']"));
-                        ss.SpeakAsync(wt.Text + "현재온도" + wt2.Text + "도");
-                        result = wt.Text;
+                        ss.SpeakAsync(wt.Text + "현재온도 " + wt2.Text + "도");
+                        result = wt.Text + "현재온도 " + wt2.Text + "도";
                         input = "";
                     }
                     catch (Exception e)
                     {
-                        ss.SpeakAsync("결과값이 정확하지 않습니다");
+                        Console.WriteLine(e);
                     }
                     input = "";
 
@@ -274,19 +273,17 @@ namespace Timmy.ClassFile
                 {
                     try
                     {
-                        IWebElement q = driver.FindElement(By.Name("q"));
-                        q.Clear();
                         q.SendKeys(searchword);
                         Actions builder = new Actions(driver);
                         builder.SendKeys(OpenQA.Selenium.Keys.Enter);
-                        var wt = driver.FindElement(By.XPath("//*[@id='rhs_block']/div/div[1]/div/div[1]/div[2]/div[2]/div/div[1]/div/div"));
+                        var wt = driver.FindElement(By.XPath("//*[@id='rhs']/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div/div[1]/div/div/div/div/span"));
                         result = wt.Text;
                         ss.SpeakAsync(result);
                         input = "";
                     }
                     catch (Exception e)
                     {
-                        ss.SpeakAsync("결과값이 정확하지 않습니다");
+                        Console.WriteLine(e);
                     }
                     input = "";
                 }
@@ -297,7 +294,9 @@ namespace Timmy.ClassFile
             {
                 main.resultbox.Text = result;
             }
-            ani.anitext(result);
+
+            if(!result.Equals(""))
+                ani.anitext(result);
 
             input = "";
 
@@ -315,7 +314,7 @@ namespace Timmy.ClassFile
                 {
                     Console.WriteLine("날씨 검색중");
                     Thread.Sleep(1000);
-                    IWebElement q = driver.FindElement(By.CssSelector("[id$=query]"));
+                    IWebElement q = driver.FindElementByName("query");
                     q.Clear();
                     q.SendKeys(searchword);
                     Actions builder = new Actions(driver);
@@ -327,7 +326,7 @@ namespace Timmy.ClassFile
                 else if (searchword.Contains("최신 노래"))
                 {
                     result = "";
-                    IWebElement q = driver.FindElement(By.CssSelector("[id$=query]"));
+                    IWebElement q = driver.FindElementByName("query");
                     q.Clear();
                     q.SendKeys(searchword);
                     Actions builder = new Actions(driver);
@@ -408,19 +407,36 @@ namespace Timmy.ClassFile
             string txt = input;
             TTS tts = new TTS();
             tts.tts(txt);
-            if (txt.Contains("켜"))
+
+            if (txt.Contains("Google"))
             {
+                txt = txt.Replace("Google", "구글");
+            }
+
+            if (txt.Contains("켜") || txt.Contains("실행"))
+            {
+                int sitecount = 0;
                 for (int i = 0; i < list.Count; i++)
                 {
                     if (txt.Contains(list[i].siteName))
                     {
+                        
                         ss.SpeakAsync(list[i].siteName + "실행");
                         internet(list[i].url);
+                        if (!list[i].siteName.Equals(""))
+                        {
+                            sitecount++;
+                        }
+                    }
+                    else if(sitecount == 0)
+                    {
+                        if (i == list.Count - 1)
+                            ss.SpeakAsync("등록되지 않은 사이트 입니다.");
 
                     }
                 }
             }
-            else if (txt.Contains("꺼"))
+            else if (txt.Contains("꺼") || txt.Contains("종료"))
             {
                 if (txt.Contains("인터넷"))
                 {
@@ -461,17 +477,20 @@ namespace Timmy.ClassFile
                     googleSearch(txt.Replace("검색", ""));
                     input = "";
                 }
-
                 else if (driver.Url.Contains("daum"))
                 {
                     daumSearch(txt.Replace("검색", ""));
                     input = "";
                 }
+                else
+                {
+                    ss.SpeakAsync("지원하지 않는 페이지 입니다.");
+                }
             }
             else if (txt.Contains("로그인"))
             {
 
-                if (txt.Contains("구글"))
+                if (txt.Contains("구글") || txt.Contains("Google"))
                 {
                     siteName = "google";
                     IList<Login> listLogin = Mapper.Instance().QueryForList<Login>("SelectSiteLogin", siteName);
@@ -523,6 +542,7 @@ namespace Timmy.ClassFile
             }
             else
             {
+                ss.SpeakAsync("무슨 말인지 잘 모르겠네요");
                 input = "";
             }
 

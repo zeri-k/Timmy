@@ -35,7 +35,7 @@ namespace Timmy
                             LanguageCode = "ko-KR",
                             Model = "command_and_search",
                             UseEnhanced = true,
-                            SpeechContexts = { new SpeechContext() { Phrases = { "티미야","인터넷", "켜", "꺼" } } }
+                            SpeechContexts = { new SpeechContext() { Phrases = { "티미야","인터넷", "켜", "꺼", "구글" } } }
                         },
                         InterimResults = true
                     }

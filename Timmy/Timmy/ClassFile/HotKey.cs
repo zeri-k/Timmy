@@ -34,7 +34,7 @@ namespace Timmy.ClassFile
             if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
             {
                 int vkCode = Marshal.ReadInt32(lParam);
-                if ((Keys)vkCode == Keys.F3)
+                if ((Keys)vkCode == Keys.F2)
                 {
                     ((MainForm)Singleton.getMainInstance()).speechStart();
                 }
