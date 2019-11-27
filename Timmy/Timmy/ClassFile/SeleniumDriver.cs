@@ -415,24 +415,31 @@ namespace Timmy.ClassFile
 
             if (txt.Contains("켜") || txt.Contains("실행"))
             {
-                int sitecount = 0;
-                for (int i = 0; i < list.Count; i++)
+                if (txt.Contains("인터넷"))
                 {
-                    if (txt.Contains(list[i].siteName))
+                    ss.SpeakAsync("인터넷 실행");
+                    internet("google.com");
+                }
+                else
+                {
+                    int sitecount = 0;
+                    for (int i = 0; i < list.Count; i++)
                     {
-                        
-                        ss.SpeakAsync(list[i].siteName + "실행");
-                        internet(list[i].url);
-                        if (!list[i].siteName.Equals(""))
+                        if (txt.Contains(list[i].siteName))
                         {
-                            sitecount++;
+                            ss.SpeakAsync(list[i].siteName + "실행");
+                            internet(list[i].url);
+                            if (!list[i].siteName.Equals(""))
+                            {
+                                sitecount++;
+                            }
                         }
-                    }
-                    else if(sitecount == 0)
-                    {
-                        if (i == list.Count - 1)
-                            ss.SpeakAsync("등록되지 않은 사이트 입니다.");
+                        else if (sitecount == 0)
+                        {
+                            if (i == list.Count - 1)
+                                ss.SpeakAsync("등록되지 않은 사이트 입니다.");
 
+                        }
                     }
                 }
             }
