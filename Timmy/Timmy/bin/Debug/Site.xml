@@ -28,6 +28,14 @@
     <delete id="setSiteDel" parameterClass="Site">
       delete from site where site_name = #siteName# and site_link = #url#
     </delete>
+
+    <select id="SelectSite2"  resultMap="SiteResultMap" parameter="String">
+      select * from site where site_name = #siteName#
+    </select>
+
+    <update id="SiteUpdate" parameterClass="System.Collections.Specialized.HybridDictionary">
+      update site set site_name = #editSite.siteName#, site_link = #editSite.url# where site_name = #selectedSite.siteName#
+    </update>
   
   </statements>
   

@@ -19,11 +19,11 @@
   <statements>
 
     <select id="SelectLogin"  resultMap="LoginResultMap">
-      select site_name ,id ,pw from login
+      select * from login
     </select>
 
     <select id="SelectSiteLogin"  resultMap="LoginResultMap" parameter="String">
-      select id ,pw from login where site_name = #siteName#
+      select * from login where site_name = #siteName#
     </select>
 
     <insert id="setLoginIns" parameterClass="Login">
@@ -33,6 +33,10 @@
     <delete id="setLoginDel" parameterClass="Login">
       delete from login where site_name = #siteName# and id = #id#
     </delete>
+
+    <update id="setLoginUpdate" parameterClass="System.Collections.Specialized.HybridDictionary">
+      update login set id = #editLogin.id#, pw = #editLogin.pw# where site_name = #selectedLogin.siteName#
+    </update>
 
   </statements>
 

@@ -15,6 +15,7 @@ namespace Timmy.Forms
     public partial class SetSiteForm : Form
     {
         IList<Site> list;
+        Site SelectedSite = new Site();
         public SetSiteForm()
         {
             this.list = Mapper.Instance().QueryForList<Site>("SelectSite", null);
@@ -27,6 +28,8 @@ namespace Timmy.Forms
             selectedRowIndex = dgvSite.CurrentCell.RowIndex;
             cbxSite.Text = dgvSite.Rows[selectedRowIndex].Cells[0].Value.ToString();
             tbxUrl.Text = dgvSite.Rows[selectedRowIndex].Cells[1].Value.ToString();
+            this.SelectedSite.siteName = cbxSite.Text;
+            this.SelectedSite.url = tbxUrl.Text;
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -34,11 +37,32 @@ namespace Timmy.Forms
             try
             {
                 Site site = new Site();
-
                 site.siteName = cbxSite.Text;
                 site.url = tbxUrl.Text;
+                
+                if (this.SelectedSite.siteName == null)
+                {
+                    this.SelectedSite = Mapper.Instance().QueryForObject<Site>("SelectSite2", site.siteName);
+                }
+                else
+                {
+                    this.SelectedSite = Mapper.Instance().QueryForObject<Site>("SelectSite2", this.SelectedSite.siteName);
+                }
 
-                Mapper.Instance().Insert("setSiteIns", site);
+                Dictionary<string, Site> dic = new Dictionary<string, Site>();
+                dic.Add("editSite", site);
+                dic.Add("selectedSite", this.SelectedSite);
+
+                if (this.SelectedSite.siteName == null)
+                {
+                    Mapper.Instance().Insert("setSiteIns", site);
+                    MessageBox.Show("입력 완료");
+                }
+                else
+                {
+                    Mapper.Instance().Update("SiteUpdate", dic);
+                    MessageBox.Show("수정 완료!");
+                }
             }
             catch (Exception ex)
             {
@@ -63,6 +87,7 @@ namespace Timmy.Forms
                 site.url = tbxUrl.Text;
 
                 Mapper.Instance().Delete("setSiteDel", site);
+                MessageBox.Show("삭제 완료");
             }
             catch (Exception ex)
             {

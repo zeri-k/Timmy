@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Speech.Synthesis;
 using System.Threading;
 using System.Windows.Forms;
 using Timmy.Forms;
@@ -15,7 +14,6 @@ namespace Timmy
 {
     public partial class MainForm : Form
     {
-        public SpeechSynthesizer ss;
         IList<Site> list = Mapper.Instance().QueryForList<Site>("SelectSite", null);
         [DllImport("kernel32.dll")]
         public static extern bool Beep(int n, int m);
@@ -29,8 +27,8 @@ namespace Timmy
         // 도 = 시 * 16/15 = 512Hz (= 처음 도의 2배)
         // 2배 = 높은음, 1/2배 = 낮은음
         public string id, pw;
-
-        SeleniumDriver sd = SeleniumDriver.Instance;
+        
+        Parser ps = Parser.Instance;
         
         public MainForm()
         {
@@ -39,7 +37,7 @@ namespace Timmy
 
         private void ttsButton_Click(object sender, EventArgs e)
         {
-            sd.textChange();
+            ps.textChange();
         }
 
         private void tsmLogin_Click(object sender, EventArgs e)
@@ -69,27 +67,29 @@ namespace Timmy
             infoForm.Show();
         }
 
-        public void btnSpeechStart_Click(object sender, EventArgs e)
+        private void btnSpeechStart_Click(object sender, EventArgs e)
         {
-            ss = new SpeechSynthesizer();
-
-            STT.StreamingMicRecognizeAsync(5);
-            ResultText(5);
+            speechStart();
         }
 
-        public void speechStart()
+        public async void speechStart()
         {
-            ss = new SpeechSynthesizer();
-
-            STT.StreamingMicRecognizeAsync(5);
-            ResultText(5);
+            try{
+                await STT.StreamingMicRecognizeAsync(5);
+                ResultText(5);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                MessageBox.Show("인터넷이 연결 되어 있지 않습니다.\n인터넷 연결 후 다시 시도 해 주세요");
+            }
+            
         }
 
-        async void ResultText(int time)
+        void ResultText(int time)
         {
-            await Task.Delay(time * 1000);
             if(STT.resultText != null)
-                sd.setInput(STT.resultText + "\r\n");
+                ps.setInput(STT.resultText + "\r\n");
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

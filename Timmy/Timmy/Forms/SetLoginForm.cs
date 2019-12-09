@@ -15,6 +15,7 @@ namespace Timmy.Forms
     public partial class SetLoginForm : Form
     {
         IList<Login> list;
+        Login selectedLogin = new Login();
         public SetLoginForm()
         {
             this.list = Mapper.Instance().QueryForList<Login>("SelectLogin", null);
@@ -28,6 +29,9 @@ namespace Timmy.Forms
             cbxSite.Text = dgvLogin.Rows[selectedRowIndex].Cells[0].Value.ToString();
             tbxId.Text = dgvLogin.Rows[selectedRowIndex].Cells[1].Value.ToString();
             tbxPw.Text = dgvLogin.Rows[selectedRowIndex].Cells[2].Value.ToString();
+            this.selectedLogin.siteName = cbxSite.Text;
+            this.selectedLogin.id = tbxId.Text;
+            this.selectedLogin.pw = tbxPw.Text;
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -39,8 +43,30 @@ namespace Timmy.Forms
                 login.siteName = cbxSite.Text;
                 login.id = tbxId.Text;
                 login.pw = tbxPw.Text;
+                
+                if(this.selectedLogin.siteName == null)
+                {
+                    this.selectedLogin = Mapper.Instance().QueryForObject<Login>("SelectSiteLogin", login.siteName);
+                }
+                else
+                {
+                    this.selectedLogin = Mapper.Instance().QueryForObject<Login>("SelectSiteLogin", this.selectedLogin.siteName);
+                }
 
-                Mapper.Instance().Insert("setLoginIns", login);
+                Dictionary<string, Login> dic = new Dictionary<string, Login>();
+                dic.Add("editLogin", login);
+                dic.Add("selectedLogin", this.selectedLogin);
+
+                if (this.selectedLogin.siteName == null)
+                {
+                    Mapper.Instance().Insert("setLoginIns", login);
+                    MessageBox.Show("입력 완료!");
+                }
+                else
+                {
+                    Mapper.Instance().Update("setLoginUpdate", dic);
+                    MessageBox.Show("수정 완료!");
+                }
             }
             catch (Exception ex)
             {
@@ -67,6 +93,7 @@ namespace Timmy.Forms
                 login.pw = tbxPw.Text;
 
                 Mapper.Instance().Delete("setLoginDel", login);
+                MessageBox.Show("삭제 완료!");
             }
             catch (Exception ex)
             {
@@ -110,6 +137,15 @@ namespace Timmy.Forms
         {
             e.Cancel = true;
             this.Visible = false;
+        }
+
+        private void dgvLogin_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if(dgvLogin.Columns[e.ColumnIndex].Index == 2)
+            {
+                dgvLogin.Rows[e.RowIndex].Tag = e.Value;
+                e.Value = new String('*', e.Value.ToString().Length);
+            }
         }
     }
 }

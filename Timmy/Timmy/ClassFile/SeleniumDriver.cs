@@ -21,13 +21,6 @@ namespace Timmy.ClassFile
         MainForm main;
         Animation ani;
         public delegate void dgtSetBox(string result);
-        string siteName;
-
-        private SeleniumDriver()
-        {
-            Thread t1 = new Thread(new ThreadStart(Run));
-            t1.Start();
-        }
 
         public static SeleniumDriver Instance
         {
@@ -44,9 +37,7 @@ namespace Timmy.ClassFile
 
         public ChromeDriver driver;
         public ChromeDriverService ser = ChromeDriverService.CreateDefaultService();
-        public SpeechSynthesizer ss;
-        IList<Site> list = Mapper.Instance().QueryForList<Site>("SelectSite", null);
-
+        public SpeechSynthesizer ss = new SpeechSynthesizer();
 
         [DllImport("kernel32.dll")]
         public static extern bool Beep(int n, int m);
@@ -60,15 +51,13 @@ namespace Timmy.ClassFile
         // 도 = 시 * 16/15 = 512Hz (= 처음 도의 2배)
         // 2배 = 높은음, 1/2배 = 낮은음
 
-        public static string input = "";
-
         public void setInput(string intxt)
         {
-            input += intxt;
-            Console.WriteLine(input + "setText");
+            Parser.input += intxt;
+            Console.WriteLine(Parser.input + "setText");
 
         }
-        string result = "";
+        
 
 
         public void googlelogin(string id, string pw)
@@ -89,11 +78,11 @@ namespace Timmy.ClassFile
             }
             catch (Exception)
             {
-                MessageBox.Show("아이디와 비번이 입력되지 않았습니다");
+                MessageBox.Show("아이디와 비밀번호가 입력되지 않았습니다");
 
             }
 
-            input = "";
+            Parser.input = "";
         }
         public void daumlogin(string id, string pw)
         {
@@ -107,10 +96,10 @@ namespace Timmy.ClassFile
             }
             catch (Exception)
             {
-                MessageBox.Show("아이디와 비번이 입력되지 않았습니다");
+                MessageBox.Show("아이디와 비밀번호가 입력되지 않았습니다");
 
             }
-            input = "";
+            Parser.input = "";
         }
         public void daummail()
         {
@@ -128,13 +117,13 @@ namespace Timmy.ClassFile
 
                 ss.SpeakAsync("먼저 로그인을 해주세요");
             }
-            input = "";
+            Parser.input = "";
         }
         public void googlemail()
         {
+            string result = "";
             try
             {
-                string a;
                 driver.Url = ("https://mail.google.com/");
                 Thread.Sleep(3000);
                 var list = driver.FindElements(By.ClassName("yW"));
@@ -145,10 +134,11 @@ namespace Timmy.ClassFile
                     var q = list[i];
                     result += q.Text + Environment.NewLine;
                 }
-                input = "";
+                Parser.input = "";
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.StackTrace);
                 ss.SpeakAsync("먼저 로그인을 해주세요");
             }
         }
@@ -160,8 +150,18 @@ namespace Timmy.ClassFile
                 {
                     if (driver.SwitchTo().Window(driver.WindowHandles.ElementAt(i)).Url.Contains(url))
                     {
-                        driver.SwitchTo().Window(driver.WindowHandles.ElementAt(i));
-                        driver.Close();
+                        if (driver.WindowHandles.Count() == 1)
+                        {
+                            driver.Close();
+                            driver = null;
+                            break;
+                        }
+                        else
+                        {
+                            driver.SwitchTo().Window(driver.WindowHandles.ElementAt(i));
+                            driver.Close();
+                            break;
+                        }
                     }
                 }
                 if (driver.WindowHandles.Count() != 0)
@@ -171,7 +171,7 @@ namespace Timmy.ClassFile
             {
                 Console.WriteLine(e.ToString());
             }
-            input = "";
+            Parser.input = "";
         }
         public void swit(string url) //탭 이동
         {
@@ -184,13 +184,15 @@ namespace Timmy.ClassFile
                         driver.SwitchTo().Window(driver.WindowHandles.ElementAt(i));
                         break;
                     }
+                    if(i == (driver.WindowHandles.Count() - 1))
+                        driver.Url = "https://www." + url + "/";
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
             }
-            input = "";
+            Parser.input = "";
         }
 
         public void internet(string url)
@@ -210,7 +212,7 @@ namespace Timmy.ClassFile
                     driver = new ChromeDriver(ser, new ChromeOptions());
                     driver.Manage().Window.Maximize();
                     driver.Url = ("https://www." + url + "/");
-                    input = "";
+                    Parser.input = "";
                 }
                 else
                 {
@@ -220,7 +222,7 @@ namespace Timmy.ClassFile
                         ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
                         driver.SwitchTo().Window(driver.WindowHandles.Last());
                         driver.Navigate().GoToUrl("https://www." + url + "/");
-                        input = "";
+                        Parser.input = "";
                     }
                     catch (Exception)
                     {
@@ -228,7 +230,7 @@ namespace Timmy.ClassFile
                         driver = new ChromeDriver(ser, new ChromeOptions());
                         driver.Manage().Window.Maximize();
                         driver.Url = ("https://www." + url + "/");
-                        input = "";
+                        Parser.input = "";
                     }
 
                 }
@@ -239,11 +241,12 @@ namespace Timmy.ClassFile
                 MessageBox.Show(e.ToString());
                 Console.WriteLine("셀레니움 드라이버 생성 오류");
             }
-            input = "";
+            Parser.input = "";
         }
         //구글 검색
         public void googleSearch(string searchword)
         {
+            string result = "";
             if (main.resultbox.InvokeRequired)
             {
                 IWebElement q = driver.FindElementByName("q");
@@ -253,20 +256,19 @@ namespace Timmy.ClassFile
                     try
                     {
                         q.SendKeys(searchword);
-                        Actions builder = new Actions(driver);
-                        builder.SendKeys(OpenQA.Selenium.Keys.Enter);
+                        q.Submit();
 
                         var wt = driver.FindElement(By.CssSelector(".vk_gy.vk_h"));
                         var wt2 = driver.FindElement(By.XPath("//*[@id='wob_tm']"));
                         ss.SpeakAsync(wt.Text + "현재온도 " + wt2.Text + "도");
                         result = wt.Text + "현재온도 " + wt2.Text + "도";
-                        input = "";
+                        Parser.input = "";
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e);
                     }
-                    input = "";
+                    Parser.input = "";
 
                 }
                 else
@@ -274,31 +276,31 @@ namespace Timmy.ClassFile
                     try
                     {
                         q.SendKeys(searchword);
-                        Actions builder = new Actions(driver);
-                        builder.SendKeys(OpenQA.Selenium.Keys.Enter);
+                        q.Submit();
                         var wt = driver.FindElement(By.XPath("//*[@id='rhs']/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div/div[1]/div/div/div/div/span"));
                         result = wt.Text;
                         ss.SpeakAsync(result);
-                        input = "";
+                        Parser.input = "";
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e);
                     }
-                    input = "";
+                    Parser.input = "";
                 }
                 dgtSetBox dgt = new dgtSetBox(googleSearch);
                 main.Invoke(dgt, new object[] { searchword });
             }
             else
             {
-                main.resultbox.Text = result;
+                if (!result.Equals(""))
+                    main.resultbox.Text = result;
             }
 
             if(!result.Equals(""))
                 ani.anitext(result);
 
-            input = "";
+            Parser.input = "";
 
         }
 
@@ -308,29 +310,26 @@ namespace Timmy.ClassFile
         // 네이버 검색
         public void naversearch(string searchword)
         {
+            string result = "";
             if (main.resultbox.InvokeRequired)
             {
+                IWebElement q = driver.FindElementByName("query");
                 if (searchword.Contains("날씨"))
                 {
                     Console.WriteLine("날씨 검색중");
                     Thread.Sleep(1000);
-                    IWebElement q = driver.FindElementByName("query");
                     q.Clear();
                     q.SendKeys(searchword);
-                    Actions builder = new Actions(driver);
-                    builder.SendKeys(OpenQA.Selenium.Keys.Enter);
+                    q.Submit();
                     var wt = driver.FindElement(By.ClassName("cast_txt"));
                     result = wt.Text.Replace("˚ ", "도"); ;
                     ss.SpeakAsync(result);
                 }
                 else if (searchword.Contains("최신 노래"))
                 {
-                    result = "";
-                    IWebElement q = driver.FindElementByName("query");
                     q.Clear();
                     q.SendKeys(searchword);
-                    Actions builder = new Actions(driver);
-                    builder.SendKeys(OpenQA.Selenium.Keys.Enter);
+                    q.Submit();
                     Thread.Sleep(3000);
 
                     var rank = driver.FindElement(By.ClassName("list_top_music"));
@@ -351,9 +350,9 @@ namespace Timmy.ClassFile
                 {
                     try
                     {
-                        IWebElement q = driver.FindElement(By.CssSelector("[id$=query]"));
                         q.Clear();
                         q.SendKeys(searchword);
+                        q.Submit();
                         Actions builder = new Actions(driver);
                         builder.SendKeys(OpenQA.Selenium.Keys.Enter);
 
@@ -365,15 +364,17 @@ namespace Timmy.ClassFile
                         Console.WriteLine("네이버 검색 오류");
                     }
                 }
-                dgtSetBox dgt = new dgtSetBox(googleSearch);
+                dgtSetBox dgt = new dgtSetBox(naversearch);
                 main.Invoke(dgt, new object[] { searchword });
             }
             else
             {
-                main.resultbox.Text = result;
+                if(!result.Equals(""))
+                    main.resultbox.Text = result;
             }
-            ani.anitext(result);
-            input = "";
+            if (!result.Equals(""))
+                ani.anitext(result);
+            Parser.input = "";
         }
         public void daumSearch(string searchword)
         {
@@ -383,230 +384,16 @@ namespace Timmy.ClassFile
                 IWebElement q = driver.FindElement(By.Name("q"));
                 q.Clear();
                 q.SendKeys(searchword);
-                Actions builder = new Actions(driver);
-                builder.SendKeys(OpenQA.Selenium.Keys.Enter);
-                input = "";
+                q.Submit();
+                Parser.input = "";
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.StackTrace);
                 ss.SpeakAsync("결과값이 정확하지 않습니다");
             }
-            input = "";
+            Parser.input = "";
 
-        }
-
-        public void textChange()
-        {
-            if (input != "")
-            {
-                Beep(1280, 50);
-                Beep(1024, 50);
-            }
-
-            ss = new SpeechSynthesizer();
-            string txt = input;
-            TTS tts = new TTS();
-            tts.tts(txt);
-
-            if (txt.Contains("Google"))
-            {
-                txt = txt.Replace("Google", "구글");
-            }
-
-            if (txt.Contains("켜") || txt.Contains("실행"))
-            {
-                if (txt.Contains("인터넷"))
-                {
-                    ss.SpeakAsync("인터넷 실행");
-                    internet("google.com");
-                }
-                else
-                {
-                    int sitecount = 0;
-                    for (int i = 0; i < list.Count; i++)
-                    {
-                        if (txt.Contains(list[i].siteName))
-                        {
-                            ss.SpeakAsync(list[i].siteName + "실행");
-                            internet(list[i].url);
-                            if (!list[i].siteName.Equals(""))
-                            {
-                                sitecount++;
-                            }
-                        }
-                        else if (sitecount == 0)
-                        {
-                            if (i == list.Count - 1)
-                                ss.SpeakAsync("등록되지 않은 사이트 입니다.");
-
-                        }
-                    }
-                }
-            }
-            else if (txt.Contains("꺼") || txt.Contains("종료"))
-            {
-                if (txt.Contains("인터넷"))
-                {
-                    ss.SpeakAsync("인터넷 종료");
-                    driver.Quit();
-                }
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (txt.Contains(list[i].siteName))
-                    {
-                        ss.SpeakAsync(list[i].siteName + "종료");
-
-                        close(list[i].url);
-                    }
-                }
-            }
-            else if (txt.Contains("이동"))
-            {
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (txt.Contains(list[i].siteName))
-                    {
-                        ss.SpeakAsync("인터넷 이동");
-                        swit(list[i].url);
-                    }
-                }
-            }
-            else if (txt.Contains("검색"))
-            {
-                ss.SpeakAsync(txt);
-                if (driver.Url.Contains("naver"))
-                {
-                    naversearch(txt.Replace("검색", ""));
-                    input = "";
-                }
-                else if (driver.Url.Contains("google"))
-                {
-                    googleSearch(txt.Replace("검색", ""));
-                    input = "";
-                }
-                else if (driver.Url.Contains("daum"))
-                {
-                    daumSearch(txt.Replace("검색", ""));
-                    input = "";
-                }
-                else
-                {
-                    ss.SpeakAsync("지원하지 않는 페이지 입니다.");
-                }
-            }
-            else if (txt.Contains("로그인"))
-            {
-
-                if (txt.Contains("구글") || txt.Contains("Google"))
-                {
-                    siteName = "google";
-                    IList<Login> listLogin = Mapper.Instance().QueryForList<Login>("SelectSiteLogin", siteName);
-                    googlelogin(listLogin[0].id, listLogin[0].pw);
-                    ss.SpeakAsync(txt);
-                }
-                else if (txt.Contains("다음"))
-                {
-                    siteName = "daum";
-                    IList<Login> listLogin = Mapper.Instance().QueryForList<Login>("SelectSiteLogin", siteName);
-                    daumlogin(listLogin[0].id, listLogin[0].pw);
-                    ss.SpeakAsync(txt);
-                }
-                else
-                {
-                    MessageBox.Show("아이디,패스워드 추가요망");
-                }
-            }
-            else if (txt.Contains("메일"))
-            {
-                if (txt.Contains("구글"))
-                {
-                    googlemail();
-                    ss.SpeakAsync(txt);
-                }
-                else if (txt.Contains("다음"))
-                {
-                    daummail();
-                    ss.SpeakAsync(txt);
-                }
-            }
-            else if (txt.Equals("새로고침"))
-            {
-                driver.Navigate().Refresh();
-            }
-            else if (txt.Equals("앞으로"))
-            {
-                driver.Navigate().Forward();
-            }
-            else if (txt.Equals("뒤로"))
-            {
-                driver.Navigate().Back();
-            }
-            else if (txt.Contains("현재 페이지 등록"))
-            {
-                ss.SpeakAsync("무슨 이름으로 등록 할까요?");
-
-                addSite(2);
-            }
-            else
-            {
-                ss.SpeakAsync("무슨 말인지 잘 모르겠네요");
-                input = "";
-            }
-
-            async void addSite(int time)
-            {
-                await Task.Delay(time * 1000);
-                input = "";
-                stt();
-                await Task.Delay(6 * 1000);
-                ss.SpeakAsync(input + "로 등록 되었습니다.");
-
-                try
-                {
-                    Site site = new Site();
-
-                    site.siteName = input;
-                    site.url = driver.Url;
-
-                    Mapper.Instance().Insert("setSiteIns", site);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-                finally
-                {
-                    input = "";
-                }
-
-            }
-            input = "";
-        }
-        private void stt()
-        {
-            ss = new SpeechSynthesizer();
-
-            STT.StreamingMicRecognizeAsync(5);
-            ResultText(5);
-        }
-
-        async void ResultText(int time)
-        {
-            await Task.Delay(time * 1000);
-            input += STT.resultText + "\r\n";
-        }
-
-
-        static void Run()
-        {
-            while (true)
-            {
-                if (!input.Equals(""))
-                {
-                    selenium.textChange();
-                    Console.WriteLine(input + "스레드");
-                }
-            }
         }
     }
 }

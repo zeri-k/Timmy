@@ -206,6 +206,7 @@
             this.dgvLogin.Size = new System.Drawing.Size(319, 172);
             this.dgvLogin.TabIndex = 0;
             this.dgvLogin.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLogin_CellClick);
+            this.dgvLogin.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvLogin_CellFormatting);
             // 
             // SetLoginForm
             // 

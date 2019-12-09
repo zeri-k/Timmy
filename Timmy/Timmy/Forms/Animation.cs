@@ -70,6 +70,11 @@ namespace Timmy.Forms
 
         private void tbxResult_Click(object sender, EventArgs e)
         {
+            clear();
+        }
+
+        public void clear()
+        {
             tbxResult.Text = "";
             main.resultbox.Text = "";
             tbxResult.Visible = false;

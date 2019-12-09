@@ -152,6 +152,7 @@
   <ItemGroup>
     <Compile Include="ClassFile\HotKey.cs" />
     <Compile Include="ClassFile\Login.cs" />
+    <Compile Include="ClassFile\Parser.cs" />
     <Compile Include="ClassFile\SeleniumDriver.cs" />
     <Compile Include="ClassFile\Singleton.cs" />
     <Compile Include="ClassFile\Site.cs" />
